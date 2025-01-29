@@ -1,0 +1,33 @@
+.img-page {
+    width: 100%; /* 1/5 of the page */
+    height: 70vh; /* Full height of the viewport */
+    background-image: url('../../assets/seth-doyle-zf9_yiAekJs-unsplash.jpg');
+    background-size: cover; /* Ensures the image covers the element without stretching */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Ensures the image doesn't repeat */
+  }
+  .img-page .discription-area
+  {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    height: 50vh;
+  }
+  .beneath-home-page
+  {
+    margin-top:50px;
+    display:flex;
+    gap:20px;
+    align-items:center;
+    justify-content: center;
+
+  }
+  .beneath-home-page div img
+  {
+    width:100%;
+    border-radius: 10px;
+    height:30vh;
+  }
+  
+  

@@ -1,0 +1,36 @@
+ .nav
+ {
+    background: yellow;
+ }
+ .navbar-container{
+    display:flex;
+    align-items:center;
+    justify-content: space-around;
+    margin-top:20px;
+ }
+ ul li{
+    text-decoration: none;
+    list-style: none;
+    transition: 0.3s;
+}
+.nav-li:hover
+{
+    padding:4px;
+   
+    cursor:pointer;
+    border:0.5px solid black;
+    border-radius: 10px;
+    transform:scale(1.05);
+    transition: 0.3s;
+}
+ul{
+    display:flex;
+    justify-content: space-between;
+    gap:20px;
+    align-items:center;
+}
+.right-section
+{
+    display:flex;
+    gap:20px;
+}
