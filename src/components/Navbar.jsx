@@ -9,8 +9,8 @@ const Navbar = () => {
       <div className="middle-section">
         <ul className="nav-ul">
           <li className="nav-li">Home</li>
-          <li  className="nav-li">about us</li>
-          <li className="nav-li">success stories</li>
+          <li  className="nav-li">Sign up</li>
+          <li className="nav-li">About us</li>
           <li className="nav-li">projects and Impacts</li>
           <li className="nav-li">news and Blogs</li>
         </ul>
