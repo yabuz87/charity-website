@@ -1,17 +1,21 @@
 import React from 'react';
-import Home from './components/home/Home';
 import Navbar from './components/Navbar';
-import images from './assets/img.js';
-import About from './components/about/About.jsx';
-import ImageSlider from './components/home/ImageSlider.jsx';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import MainHome from './components/home/MainHome.jsx';
+import BlogAndNews from './components/Blogs/BlogAndNews.jsx';
+import Donate from './components/Donate/Donate.jsx';
 
 const App = () => {
   return (
     <div>
-      <Navbar />
-      <Home />
-      <About/>
-      <ImageSlider/>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<MainHome />} />
+          <Route path="/blog" element={<BlogAndNews/>}/>
+          <Route path="/donate" element={<Donate/>}/>
+        </Routes>
+      </Router>
     </div>
   );
 }
