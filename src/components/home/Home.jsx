@@ -1,12 +1,25 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import img1 from "../../assets/doug-linstedt-jEEYZsaxbH4-unsplash.jpg"
 import img2 from "../../assets/seth-doyle-zf9_yiAekJs-unsplash.jpg"
-import {motion} from "framer-motion"
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import img3 from "../../assets/bill-wegener-LqOO5Ko0zSo-unsplash.jpg"
+
 import "./home.css"
 
 
 const Home = () => {
+  const controls = useAnimation();
+    const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.1 });
+  
+    useEffect(() => {
+      if (inView) {
+        controls.start('show');
+      } else {
+        controls.start('hidden');
+      }
+    }, [controls, inView]);
+  
   return (
     <>
      <div className="img-page">
@@ -16,19 +29,56 @@ const Home = () => {
      </div>
     </div>
     <h1 className="text-center py-3">Our Community</h1>
-    <motion.div  className="beneath-home-page">
-      <div>
+    <motion.div 
+    ref={ref}
+          initial="hidden"
+          animate={controls}
+          variants={{
+            hidden: {
+              opacity: 0,
+            },
+            show: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.25,
+              },
+            },
+          }}
+
+     className="beneath-home-page">
+      <motion.div variants={{
+              hidden: {
+                opacity: 0,
+              },
+              show: {
+                opacity: 1,
+              },
+            }}>
       <img src={img1}/>
       <p className="text-center">one for one</p>
-      </div>
-      <div>
+      </motion.div>
+      <motion.div variants={{
+              hidden: {
+                opacity: 0,
+              },
+              show: {
+                opacity: 1,
+              },
+            }}>
       <img src={img2}/>
       <p className="text-center">one for one</p>
-      </div>
-      <div>
+      </motion.div>
+      <motion.div variants={{
+              hidden: {
+                opacity: 0,
+              },
+              show: {
+                opacity: 1,
+              },
+            }}>
       <img src={img3}/>
       <p className="text-center">one for one</p>
-      </div>
+      </motion.div>
     </motion.div>
     </>
   )
