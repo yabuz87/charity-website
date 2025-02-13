@@ -17,7 +17,7 @@ const About = () => {
 
   return (
     <>
-      <h1 className="text-center my-5">About</h1>
+      <h1 className="text-center  about-title-h1">About Us</h1>
       <hr />
       <div className="about-section-container my-2">
         <motion.div
@@ -48,7 +48,7 @@ const About = () => {
             }}
             className="col-3 card m-1 bg-transparent"
           >
-            <h2 className="text-center">Our Mission</h2>
+            <h2 className="text-center">Brief Intoduction</h2>
             <p>
               At [Your Charity Association's Name], we are deeply committed to making a difference in the lives of the most vulnerable members of our community. Our mission is two-fold: to provide essential support and resources to the elderly who face life-threatening circumstances and to offer comprehensive educational and psychological aid to children in need.
             </p>
@@ -65,7 +65,7 @@ const About = () => {
             }}
             className="col-4 m-2 card bg-transparent"
           >
-            <h2 className="text-center">Supporting the Elderly</h2>
+            <h2 className="text-center">Our Mission</h2>
             <p>
               We recognize that many elderly individuals live in conditions that jeopardize their safety and well-being. Our dedicated team works tirelessly to reach out to these individuals, offering them adequate survival aid to improve their quality of life. This includes providing:
               <ul>
@@ -77,6 +77,28 @@ const About = () => {
             </p>
           </motion.div>
 
+          <motion.div
+            variants={{
+              hidden: {
+                opacity: 0,
+              },
+              show: {
+                opacity: 1,
+              },
+            }}
+            className="col-4 m-2 card bg-transparent"
+          >
+            <h2 className="text-center">Values</h2>
+            <p>
+              We believe that every child deserves the opportunity to thrive, regardless of their circumstances. Our association focuses on delivering educational and psychological support to children who face significant challenges. Our initiatives include:
+              <ul>
+                <li>Providing access to quality education and learning materials.</li>
+                <li>Offering counseling and psychological services to support mental health.</li>
+                <li>Creating safe spaces for children to learn, play, and grow.</li>
+              </ul>
+              Through these efforts, we strive to empower children with the tools and support they need to build a brighter future.
+            </p>
+          </motion.div>
           <motion.div
             variants={{
               hidden: {

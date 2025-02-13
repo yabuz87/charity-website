@@ -41,3 +41,15 @@ ul{
     display:flex;
     gap:30px;
 }
+/* Ensure the button displays its content as a flex container */
+button.btn {
+    display: flex;
+    align-items: center; /* Vertically centers the icon and text */
+    justify-content: center; /* Horizontally centers the icon and text */
+    gap: 8px; /* Adds space between icon and text (alternative to margin-right) */
+  }
+  
+  button.btn .bi {
+    font-size: 1.2em; /* Adjust icon size if necessary */
+  }
+  
