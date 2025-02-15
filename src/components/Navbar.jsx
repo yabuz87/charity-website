@@ -36,28 +36,28 @@ const Navbar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
+              <li className="nav-item list">
                 <a className="nav-link ms-5 active" aria-current="page" href="#" onClick={() => goto("/")}>Home</a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#" onClick={() => goto("/signupOrlogin")}>Sign Up/Login</a>
+              <li className="nav-item list">
+                <a className="nav-link " href="#" onClick={() => goto("/signupOrlogin")}>Sign Up/Login</a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#" onClick={() => goto("/about")}>About Us</a>
+              <li className="nav-item list">
+                <a className="nav-link " href="#" onClick={() => goto("/about")}>About Us</a>
               </li>
-              <li className="nav-item">
+              <li className="nav-item list">
                 <a className="nav-link" href="#" onClick={() => goto("/projects")}>Projects and Impacts</a>
               </li>
-              <li className="nav-item">
+              <li className="nav-item list">
                 <a className="nav-link" href="#" onClick={() => goto("/blog")}>News and Blogs</a>
               </li>
-              <li className="nav-item">
+              <li className="nav-item list">
                 <a className="nav-link" href="#" onClick={() => goto("/blog")}>Contact Us</a>
               </li>
             </ul>
-            <div className="d-flex">
-            <button className="btn btn-primary" onClick={() => goto("/donate")}><i className="bi bi-envelope-paper-heart me-2 fs-4 text-danger"></i>Donate</button>
-         <button className="btn btn-secondary ms-2" onClick={() => goto("/volunteer")}> <i className="bi bi-person-raised-hand text-light"></i>Enroll as Volunteer</button>
+            <div className="d-flex gap-2">
+            <button className="btn btn-primary p-2 list" onClick={() => goto("/donate")}><i className="bi bi-envelope-paper-heart me-2 fs-4 text-black"></i>Donate</button>
+         <button className="btn btn-secondary p-2 list" onClick={() => goto("/volunteer")}> <i className="bi bi-person-raised-hand text-light"></i>Enroll as Volunteer</button>
             </div>
           </div>
         </div>

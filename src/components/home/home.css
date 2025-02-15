@@ -5,6 +5,8 @@
     background-size: cover; /* Ensures the image covers the element without stretching */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Ensures the image doesn't repeat */
+    /* filter: blur(2px); */
+    filter: brightness(50%);
   }
   .img-page .discription-area
   {
@@ -13,7 +15,24 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 50vh;
+    height: 80vh;
+  }
+  .donate-button-container
+  {
+      display:flex;
+      margin-top:90px;
+      align-items: center;
+      justify-content: center;
+      gap:10px;
+  }
+  .vol-home-button,.donation-home-button
+  {
+    z-index:100;
+    background-color: transparent;
+    color:white;
+    font-weight: 600;
+    border:0.8px solid rgb(168, 223, 223);
+    border-radius:10px;
   }
   .beneath-home-page
   {

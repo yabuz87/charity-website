@@ -26,6 +26,11 @@ const Home = () => {
      <div className="discription-area">
      <h1 className="text-light">Empowering lives, one act of kindness at a time.</h1>
      <p className="text-light">this is the official website of _____ charity assosication</p>
+     <div className="donate-button-container">
+     <button className="vol-home-button">Become a Volnteer</button>
+     <button className="donation-home-button">Donate</button>
+     </div>
+
      </div>
     </div>
     <h1 className="text-center py-3">Our Community</h1>
@@ -66,7 +71,7 @@ const Home = () => {
               },
             }}>
       <img src={img2}/>
-      <p className="text-center">one for one</p>
+      <p className="text-center">this one </p>
       </motion.div>
       <motion.div variants={{
               hidden: {

@@ -1,0 +1,25 @@
+.blog-section-container {
+    display: flex;
+    margin-top: 70px;
+}
+
+.left-section {
+    display: flex;
+    flex-direction: column; /* Ensures images and content stack vertically */
+    /* width: 70%; Adjusts the width to fit within the flex container */
+}
+
+.left-section img {
+    width: 70%;
+}
+
+.right-section {
+    position: fixed;
+    height: 100%;
+    z-index:10;
+    right: 0; /* Ensures the fixed position aligns to the right */
+    width: 25%; /* Adjusts the width to fit within the flex container */
+    background-color: #f5f5f5; /* Optional: Add background color if desired */
+    padding: 10px; /* Optional: Add padding for better spacing */
+    overflow-y: auto; /* Optional: Allow scrolling if the content overflows */
+}
