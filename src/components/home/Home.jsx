@@ -60,6 +60,7 @@ const Home = () => {
               },
             }}>
       <img src={img1}/>
+      
       <p className="text-center">one for one</p>
       </motion.div>
       <motion.div variants={{

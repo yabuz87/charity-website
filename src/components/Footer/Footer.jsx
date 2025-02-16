@@ -3,9 +3,9 @@ import "./Footer.css";
 
 const Footer = () => {
   return (
-    <footer className="footer bg-ligth text-dark text-center my-3 container-lg">
+    <footer className="footer  bg-ligth text-dark text-center my-3 container-lg">
     <hr></hr>
-      <div className="container">
+      <div className="container-fluid footer-part">
         <div className="row">
           <div className="col-md-4 col-sm-6 col-12">
             <h5>About Us</h5>

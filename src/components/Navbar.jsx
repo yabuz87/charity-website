@@ -42,14 +42,24 @@ const Navbar = () => {
               <li className="nav-item list">
                 <a className="nav-link " href="#" onClick={() => goto("/signupOrlogin")}>Sign Up/Login</a>
               </li>
+              <li className="nav-item dropdown">
+          <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Visit Our Org
+          </a>
+          <ul className="dropdown-menu">
+            <li><a className="dropdown-item" href="#">Gallery</a></li>
+            <li className="nav-item list">
+                <a className="nav-link" href="#" onClick={() => goto("/blog")}>News and Blogs</a>
+              </li>
+            <li><hr className="dropdown-divider"></hr></li>
+            <li><a className="dropdown-item" href="#">Success Stories</a></li>
+          </ul>
+        </li>
               <li className="nav-item list">
                 <a className="nav-link " href="#" onClick={() => goto("/about")}>About Us</a>
               </li>
               <li className="nav-item list">
                 <a className="nav-link" href="#" onClick={() => goto("/projects")}>Projects and Impacts</a>
-              </li>
-              <li className="nav-item list">
-                <a className="nav-link" href="#" onClick={() => goto("/blog")}>News and Blogs</a>
               </li>
               <li className="nav-item list">
                 <a className="nav-link" href="#" onClick={() => goto("/blog")}>Contact Us</a>
