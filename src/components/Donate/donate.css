@@ -1,0 +1,17 @@
+.donate-img-page {
+    width: 100%; /* 1/5 of the page */
+    height: 70vh; /* Full height of the viewport */
+    background-image: url('../../assets/bill-wegener-LqOO5Ko0zSo-unsplash.jpg');
+    background-size: cover; /* Ensures the image covers the element without stretching */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Ensures the image doesn't repeat */
+    filter: blur(1px);
+    filter: brightness(50%);
+  }
+  h1{
+    text-align: center;
+    color:white;
+    align-items: center;
+    max-height: 10vh;
+    justify-content: center;
+  }

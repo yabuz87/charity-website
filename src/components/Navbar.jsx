@@ -30,7 +30,7 @@ const Navbar = () => {
     showNavbar && (
       <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
         <div className="container-lg">
-          <a className="navbar-brand me-5" href="#">Logo</a>
+          <a className="navbar-brand me-5" href="#" onClick={()=>goto("/")}>Logo</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -42,19 +42,6 @@ const Navbar = () => {
               <li className="nav-item list">
                 <a className="nav-link " href="#" onClick={() => goto("/signupOrlogin")}>Sign Up/Login</a>
               </li>
-              <li className="nav-item dropdown">
-          <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Visit Our Org
-          </a>
-          <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="#">Gallery</a></li>
-            <li className="nav-item list">
-                <a className="nav-link" href="#" onClick={() => goto("/blog")}>News and Blogs</a>
-              </li>
-            <li><hr className="dropdown-divider"></hr></li>
-            <li><a className="dropdown-item" href="#">Success Stories</a></li>
-          </ul>
-        </li>
               <li className="nav-item list">
                 <a className="nav-link " href="#" onClick={() => goto("/about")}>About Us</a>
               </li>
@@ -64,10 +51,23 @@ const Navbar = () => {
               <li className="nav-item list">
                 <a className="nav-link" href="#" onClick={() => goto("/blog")}>Contact Us</a>
               </li>
+              <li className="nav-item dropdown">
+          <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Visit Our Org
+          </a>
+          <ul className="dropdown-menu">
+            <li className="list"><a className="dropdown-item" href="#">Gallery</a></li>
+            <li className="nav-item list">
+                <a className="nav-link" href="#" onClick={() => goto("/blog")}>News and Blogs</a>
+              </li>
+            <li><hr className="dropdown-divider"></hr></li>
+            <li className="list"><a className="dropdown-item" href="#">Success Stories</a></li>
+          </ul>
+        </li>
             </ul>
             <div className="d-flex gap-2">
-            <button className="btn btn-primary p-2 list" onClick={() => goto("/donate")}><i className="bi bi-envelope-paper-heart me-2 fs-4 text-black"></i>Donate</button>
-         <button className="btn btn-secondary p-2 list" onClick={() => goto("/volunteer")}> <i className="bi bi-person-raised-hand text-light"></i>Enroll as Volunteer</button>
+            <button className="btn btn-primary p-2 " onClick={() => goto("/donate")}><i className="bi bi-envelope-paper-heart me-2 fs-4 text-black"></i>Donate</button>
+         <button className="btn btn-secondary p-2 " onClick={() => goto("/volunteer")}> <i className="bi bi-person-raised-hand text-light"></i>Enroll as Volunteer</button>
             </div>
           </div>
         </div>

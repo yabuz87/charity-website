@@ -3,8 +3,7 @@ import "./Footer.css";
 
 const Footer = () => {
   return (
-    <footer className="footer  bg-ligth text-dark text-center my-3 container-lg">
-    <hr></hr>
+    <footer className="footer  bg-ligth text-dark text-center my-3 container-fluid">
       <div className="container-fluid footer-part">
         <div className="row">
           <div className="col-md-4 col-sm-6 col-12">
@@ -35,7 +34,7 @@ const Footer = () => {
         </div>
         <div className="row">
           <div className="col-12">
-            <p className=" mb-0">&#169; 2025 by ABC Charity Association</p>
+            <p className=" mb-2">&#169; 2025 by ABC Charity Association</p>
           </div>
         </div>
       </div>

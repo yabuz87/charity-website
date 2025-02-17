@@ -4,8 +4,8 @@ import "./donate.css"
 
 const Donate = () => {
   return (
-    <div className="container-lg">
-      Hello Volunteers
+    <div className="container-fluid donate-img-page">
+    <h1 className="text-light"> Donation</h1>
     </div>
   )
 }
