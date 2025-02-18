@@ -7,7 +7,7 @@ const Navbar = () => {
 
   const handleScroll = () => {
     const currentScrollPos = window.pageYOffset;
-    if (currentScrollPos > 500) {
+    if (currentScrollPos > 200) {
       setShowNavbar(false);
     } else {
       setShowNavbar(true);
@@ -28,23 +28,24 @@ const Navbar = () => {
 
   return (
     showNavbar && (
-      <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
-        <div className="container-lg">
+      <nav className="navbar navbar-expand-lg  bg-body-tertiary fixed-top">
+        <div className="container-lg ">
           <a className="navbar-brand me-5" href="#" onClick={()=>goto("/")}>Logo</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarText">
+          <div className="collapse navbar-collapse text-success" id="navbarText">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item list">
+              {/* <li className="nav-item list">
                 <a className="nav-link ms-5 active" aria-current="page" href="#" onClick={() => goto("/")}>Home</a>
+              </li> */}
+              <li className="nav-item list">
+                <a className="nav-link " href="#" onClick={() => goto("/about")}>About Us</a>
               </li>
               <li className="nav-item list">
                 <a className="nav-link " href="#" onClick={() => goto("/signupOrlogin")}>Sign Up/Login</a>
               </li>
-              <li className="nav-item list">
-                <a className="nav-link " href="#" onClick={() => goto("/about")}>About Us</a>
-              </li>
+              
               <li className="nav-item list">
                 <a className="nav-link" href="#" onClick={() => goto("/projects")}>Projects and Impacts</a>
               </li>
@@ -66,7 +67,7 @@ const Navbar = () => {
         </li>
             </ul>
             <div className="d-flex gap-2">
-            <button className="btn btn-primary p-2 " onClick={() => goto("/donate")}><i className="bi bi-envelope-paper-heart me-2 fs-4 text-black"></i>Donate</button>
+            <button className="btn btn-success p-2 " onClick={() => goto("/donate")}><i className="bi bi-envelope-paper-heart me-2 fs-4 text-black"></i>Donate</button>
          <button className="btn btn-secondary p-2 " onClick={() => goto("/volunteer")}> <i className="bi bi-person-raised-hand text-light"></i>Enroll as Volunteer</button>
             </div>
           </div>

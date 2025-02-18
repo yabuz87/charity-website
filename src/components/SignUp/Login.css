@@ -1,6 +1,7 @@
 .Signup-container {
     margin-top: 100px;
     display: flex;
+   
     flex-direction: column;
     justify-content: center; /* Centering vertically */
     align-items: center; /* Centering horizontally */
@@ -25,6 +26,7 @@
 .Signup-container label {
     margin-bottom: 5px; /* Small margin below labels for spacing */
     font-weight: bold; /* Making labels bold for better readability */
+    color:green;
 }
 
 .Signup-container input[type="text"],
@@ -44,6 +46,7 @@
 .account-type-label {
     font-weight: 100; /* Setting font-weight to normal for radio button labels */
     width:60px;
+    color:black;
     margin-right: 10px; /* Adding space between the label and radio button */
 }
 

@@ -24,7 +24,7 @@ const Login = () => {
       </div>
       <p> <i className="bi bi-google text-center fs-2"></i></p>
       <hr />
-      <h5 className="" onClick={gotoSignup}>Don't you have an account? <span className="text-info">Signup here</span></h5>
+      <h5 className="" onClick={gotoSignup}>Don't you have an account? <span className="text-success">Signup here</span></h5>
     </div>
   )
 }

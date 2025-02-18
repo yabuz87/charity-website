@@ -1,6 +1,5 @@
  .nav
  {
-    background: yellow;
     position:fixed;
     right:0;
     top:0;
@@ -23,6 +22,12 @@
     position: relative;
     transition: 0.3s;
 }
+.list a{
+    color:rgb(9, 144, 9);
+    font-weight: 500;
+    font-size:18px;
+}
+
 
 .list::after {
     content: '';
