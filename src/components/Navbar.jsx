@@ -49,10 +49,7 @@ const Navbar = () => {
               <li className="nav-item list">
                 <a className="nav-link" href="#" onClick={() => goto("/projects")}>Projects and Impacts</a>
               </li>
-              <li className="nav-item list">
-                <a className="nav-link" href="#" onClick={() => goto("/blog")}>Contact Us</a>
-              </li>
-              <li className="nav-item dropdown">
+              <li className="nav-item dropdown list">
           <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Visit Our Org
           </a>
@@ -61,8 +58,11 @@ const Navbar = () => {
             <li className="nav-item list">
                 <a className="nav-link" href="#" onClick={() => goto("/blog")}>News and Blogs</a>
               </li>
+              <li className="list"><a className="dropdown-item" href="#" onClick={()=>goto("/stories")}>Success Stories</a></li>
             <li><hr className="dropdown-divider"></hr></li>
-            <li className="list"><a className="dropdown-item" href="#">Success Stories</a></li>
+            <li className="nav-item list">
+                <a className="nav-link" href="#" onClick={() => goto("/contact")}>Contact Us</a>
+              </li>
           </ul>
         </li>
             </ul>

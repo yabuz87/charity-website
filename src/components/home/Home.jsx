@@ -122,6 +122,7 @@ const Home = () => {
         <p>Our goal in health is to reach every child to ensure their safety and well-being in this country.</p>
       </motion.div>
     </motion.div>
+    <ImageSlider/>
     </>
   )}
 

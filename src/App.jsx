@@ -8,6 +8,7 @@ import BlogAndNews from "./components/Blogs/BlogAndNews"
 import Signup from './components/SignUp/Signup';
 import Login from "./components/SignUp/Login";
 import Donate from './components/Donate/Donate';
+import Stories from './components/Additional/stories/stories';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
       <Route path="/signup" element={<Signup/>}/>
       <Route path="/blog" element={<BlogAndNews/>}/>
       <Route path="/donate" element={<Donate/>}/>
+      <Route path="/stories" element={<Stories/>}/>
       </Routes>
       {/* <Footer/> */}
     </Router>

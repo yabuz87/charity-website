@@ -20,9 +20,6 @@ const BlogAndNews = () => {
           ))
         }
       </div>
-      <div className="right-section col-md-3">
-        <p>side bar here</p>
-      </div>
     </div>
   );
 };
