@@ -6,7 +6,8 @@ import { useInView } from 'react-intersection-observer';
 import img3 from "../../assets/bill-wegener-LqOO5Ko0zSo-unsplash.jpg"
 
 import "./home.css"
-import ImageSlider from './ImageSlider';
+// import ImageSlider from './ImageSlider';
+import HomePageImgSlider from './HomePageImgSlider';
 
 
 const Home = () => {
@@ -122,7 +123,10 @@ const Home = () => {
         <p>Our goal in health is to reach every child to ensure their safety and well-being in this country.</p>
       </motion.div>
     </motion.div>
-    <ImageSlider/>
+    <div className="container-lg">
+    <HomePageImgSlider/>
+    </div>
+    
     </>
   )}
 

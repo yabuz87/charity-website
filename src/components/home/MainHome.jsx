@@ -7,6 +7,7 @@ const MainHome = () => {
   return (
     <div>
       <Home/>
+      
       {/* <ImageSlider/> */}
       {/* <About/> */}
     </div>
