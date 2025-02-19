@@ -1,13 +1,10 @@
 import React,{useEffect} from 'react'
-import img1 from "../../assets/doug-linstedt-jEEYZsaxbH4-unsplash.jpg"
-import img2 from "../../assets/seth-doyle-zf9_yiAekJs-unsplash.jpg"
+import img1 from "../../assets/imgs/img1.jpg"
+import img2 from "../../assets/imgs/img3.jpg"
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import img3 from "../../assets/bill-wegener-LqOO5Ko0zSo-unsplash.jpg"
-
+import img3 from "../../assets/imgs/img2.jpg"
 import "./home.css"
-// import ImageSlider from './ImageSlider';
-import HomePageImgSlider from './HomePageImgSlider';
 
 
 const Home = () => {
@@ -123,8 +120,35 @@ const Home = () => {
         <p>Our goal in health is to reach every child to ensure their safety and well-being in this country.</p>
       </motion.div>
     </motion.div>
-    <div className="container-lg">
-    <HomePageImgSlider/>
+    <h1 className="text-center text-success">Our Programs</h1>
+    <h4 className="text-center container-lg">Thanks to our specially trained staff, whose efforts are supported and amplified by hundreds of committed volunteers and donors, Horizons provides hope and opportunity to the families we serve.</h4>
+    <div className="container-lg g-1 row d-flex">
+<div className="row">
+<div className="col-md-6">
+      <img src={img1} className="img-fluid"></img>
+      <h3>specially trained staff</h3>
+      <p>specially trained staffspecially trained staffspecially trained staffvspecially trained staffspecially trained staffspecially trained staff</p>
+    </div>
+    <div className="col-md-6">
+      <img src={img1} className="img-fluid"></img>
+      <h3>specially trained staff</h3>
+      <p>specially trained staffspecially trained staffspecially trained staffvspecially trained staffspecially trained staffspecially trained staff</p>
+    </div>
+</div>
+<div className="row container-lg">
+<div className="col-md-6">
+      <img src={img1} className="img-fluid"></img>
+      <h3>specially trained staff</h3>
+      <p>specially trained staffspecially trained staffspecially trained staffvspecially trained staffspecially trained staffspecially trained staff</p>
+    </div>
+    <div className="col-md-6">
+      <img src={img1} className="img-fluid"></img>
+      <h3>specially trained staff</h3>
+      <p>specially trained staffspecially trained staffspecially trained staffvspecially trained staffspecially trained staffspecially trained staff</p>
+    </div>
+</div>
+    
+    
     </div>
     
     </>

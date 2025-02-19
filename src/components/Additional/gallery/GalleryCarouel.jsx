@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import  data from "../../../assets/imgs/project"
+import  {data} from "../../../assets/imgs/project"
 import Slider from "react-slick";
+
 import "./Gallery.css";
 
 function GalleryCarouel() {
@@ -14,6 +15,8 @@ function GalleryCarouel() {
   };
   return (
     <div className="slider-container">
+
+            
       <Slider {...settings}>
        {data.map((data, index) => (
                  <div key={index} className="slide" aria-hidden="false">

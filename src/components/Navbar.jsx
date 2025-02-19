@@ -36,9 +36,9 @@ const Navbar = () => {
           </button>
           <div className="collapse navbar-collapse text-success" id="navbarText">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              {/* <li className="nav-item list">
-                <a className="nav-link ms-5 active" aria-current="page" href="#" onClick={() => goto("/")}>Home</a>
-              </li> */}
+              <li className="nav-item list ">
+                <a className="nav-link ms-5 " aria-current="page" href="#" onClick={() => goto("/")}>Home</a>
+              </li>
               <li className="nav-item list">
                 <a className="nav-link " href="#" onClick={() => goto("/about")}>About Us</a>
               </li>
@@ -58,7 +58,6 @@ const Navbar = () => {
             <li className="nav-item list">
                 <a className="nav-link" href="#" onClick={() => goto("/blog")}>News and Blogs</a>
               </li>
-              <li className="list"><a className="dropdown-item" href="#" onClick={()=>goto("/stories")}>Success Stories</a></li>
             <li><hr className="dropdown-divider"></hr></li>
             <li className="nav-item list">
                 <a className="nav-link" href="#" onClick={() => goto("/contact")}>Contact Us</a>
