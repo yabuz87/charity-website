@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -21,11 +21,14 @@ function ProjectDescriptionSlider() {
     }
   };
 
-  const [readMore,setReadMore]=useState(false);
-  const handleReadMore=()=>
-  {
-    setReadMore(!readMore);
-  }
+  const [readMoreStates, setReadMoreStates] = useState({});
+
+  const handleReadMore = (index) => {
+    setReadMoreStates({
+      ...readMoreStates,
+      [index]: !readMoreStates[index]
+    });
+  };
 
   return (
     <div className="slider-container">
@@ -34,13 +37,19 @@ function ProjectDescriptionSlider() {
           <div className="" key={index}>
             <h3 className="text-center text-dark">{proj.title}</h3>
             <div className="row d-flex align-items-center">
-            <p className="col-md-7" style={{ margin: "5px" }}>{proj.description}
-            <span className={`${readMore? 'd-block' : 'd-none'}`}>{proj.readMore}</span>
-            </p>
-            
-            <img src={proj.img} className="col-md-4"/>
+              <p className="col-md-7" style={{ margin: "5px" }}>
+                {proj.description}
+                <span className={`${readMoreStates[index] ? 'd-block' : 'd-none'}`}>{proj.readMore}</span>
+              </p>
+              <img src={proj.img} className="col-md-4" alt={proj.title} />
             </div>
-            <button className="btn btn-success" style={{ marginTop: "10px",display:"flex",alignItems:"center"}} onClick={handleReadMore}>{readMore ? "Read Less": "Read More"}</button>
+            <button
+              className="btn btn-success"
+              style={{ marginTop: "10px", display: "flex", alignItems: "center" }}
+              onClick={() => handleReadMore(index)}
+            >
+              {readMoreStates[index] ? "Read Less" : "Read More"}
+            </button>
             <p></p>
           </div>
         ))}

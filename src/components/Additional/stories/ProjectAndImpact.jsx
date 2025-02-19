@@ -10,6 +10,9 @@ const ProjectAndImpact = () => {
       <ProjectSlider/>
       <h1 className="text-success">Project And Our Impacts</h1>
       <ProjectDescriptionSlider/>
+      <div className="">
+        <h1 className="text-center text-success">You are the one Who can make a change with us</h1>
+      </div>
     </div>
   )
 }

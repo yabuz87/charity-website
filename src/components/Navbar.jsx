@@ -54,7 +54,7 @@ const Navbar = () => {
             Visit Our Org
           </a>
           <ul className="dropdown-menu">
-            <li className="list"><a className="dropdown-item" href="#">Gallery</a></li>
+            <li className="list"><a className="dropdown-item" onClick={()=>{goto("/gallery")}}>Gallery</a></li>
             <li className="nav-item list">
                 <a className="nav-link" href="#" onClick={() => goto("/blog")}>News and Blogs</a>
               </li>
