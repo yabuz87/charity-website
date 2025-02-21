@@ -30,9 +30,15 @@
     z-index:100;
     background-color: transparent;
     color:white;
-    font-weight: 600;
-    border:0.8px solid rgb(168, 223, 223);
+    font-weight: 700;
+    padding:10px;
+    transition:0.4s;
+    border:1.8px solid rgb(16, 202, 59);
     border-radius:10px;
+  }
+  .vol-home-button:hover,.donation-home-button:hover{
+    background-color: green;
+    transition:0.4s;
   }
 
 

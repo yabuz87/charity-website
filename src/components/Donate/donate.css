@@ -35,3 +35,14 @@
   .donation-form input{
     box-shadow: 0.3px 0.3px 2px 0.6px rgba(0, 0, 0, 0.2);
   }
+  .bank-icon
+  {
+    transition:0.4s;
+    cursor:pointer;
+  }
+
+  .bank-icon:hover
+  {
+    transform:scale(1.03);
+    transition:0.4s;
+  }

@@ -3,21 +3,27 @@ import img1 from "../../assets/imgs/img1.jpg"
 import img2 from "../../assets/imgs/img3.jpg"
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useNavigate } from 'react-router-dom';
 import img3 from "../../assets/imgs/img2.jpg"
 import "./home.css"
 
 
 const Home = () => {
-  const controls = useAnimation();
-    const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.1 });
+  // const controls = useAnimation();
+  //   const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.1 });
   
-    useEffect(() => {
-      if (inView) {
-        controls.start('show');
-      } else {
-        controls.start('hidden');
-      }
-    }, [controls, inView]);
+  //   useEffect(() => {
+  //     if (inView) {
+  //       controls.start('show');
+  //     } else {
+  //       controls.start('hidden');
+  //     }
+  //   }, [controls, inView]);
+const navigate=useNavigate();
+const handleNavigate=(props)=>{
+navigate(props);
+
+   }
   
   return (
     <>
@@ -26,8 +32,8 @@ const Home = () => {
      <h1 className="text-light">Empowering lives, one act of kindness at a time.</h1>
      <p className="text-light">this is the official website of _____ charity assosication something to adddddddisoerotjeorijergiojerogmdkmbs;rdgpwre</p>
      <div className="donate-button-container">
-     <button className="vol-home-button">Become a Volnteer</button>
-     <button className="donation-home-button">Donate</button>
+     <button className="vol-home-button" onClick={()=>handleNavigate("/contact")}>Contact Us</button>
+     <button className="donation-home-button" onClick={()=>handleNavigate("/donate")}>Donate</button>
      </div>
 
      </div>

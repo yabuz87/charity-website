@@ -3,7 +3,7 @@ import birhan from "./download (1).png"
 import abiyiniya from "./download (2).png"
 import awash from "./download.jpg"
 import  telebirr from "./download.png"
-import amhara from "./download (3).png"
+import paypal from "./download (4).png"
 
 
 export const banks=[
@@ -34,9 +34,9 @@ export const banks=[
 
     },
     {
-        name:'Amhara',
-        img:amhara,
-        accNo:1000395714094
+        name:"payPal",
+        img:paypal,
+        accNo:"acc@gmail.com"
     },
     
     

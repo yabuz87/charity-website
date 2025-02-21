@@ -67,7 +67,6 @@ const Navbar = () => {
             </ul>
             <div className="d-flex gap-2">
             <button className="btn btn-success p-2 " onClick={() => goto("/donate")}><i className="bi bi-envelope-paper-heart me-2 fs-4 text-black"></i>Donate</button>
-         <button className="btn btn-secondary p-2 " onClick={() => goto("/volunteer")}> <i className="bi bi-person-raised-hand text-light"></i>Enroll as Volunteer</button>
             </div>
           </div>
         </div>

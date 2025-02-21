@@ -12,7 +12,6 @@ import Stories from './components/Additional/stories/Stories';
 import ProjectAndImpact from './components/Additional/stories/ProjectAndImpact';
 import Gallery from './components/Additional/gallery/Gallery';
 
-
 const App = () => {
   return (
     <Router>

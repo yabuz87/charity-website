@@ -76,10 +76,10 @@ const Donate = () => {
             <h4 className="text-center">Donating methods</h4>
             <div className="row">
               {banks.map((oneBank, index) => (
-                <div className="col-md-4 border p-1" key={index}>
+                <div className="col-md-3  border m-1 bank-icon" key={index}>
                   <img src={oneBank.img} alt={oneBank.name} className="mb-2"></img>
                   <p className="fw-bold">{oneBank.name}</p>
-                  {oneBank.accNo && <p className="fw-bold">Account: {oneBank.accNo}</p>}
+                  {oneBank.accNo && <p className="fw-bold ">Account: {oneBank.accNo}</p>}
                 </div>
               ))}
             </div>
