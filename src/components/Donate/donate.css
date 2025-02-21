@@ -22,22 +22,16 @@
   }
   .donation-form
   {
-    /* display:flex;
-    align-items: center;
+    display:flex;
+    align-items:center;
     justify-content: center;
-    box-shadow:1px 2px 1px 1px rgba(0,0,0,0.2);
-    margin:10px;
-    padding:50px;
-    border:0.5px solid; */
-
-    margin-top: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centering vertically */
-    align-items: center; /* Centering horizontally */
-    box-shadow: 0.3px 0.3px 2px 0.3px rgba(0, 0, 0, 0.2);
-    padding: 20px; /* Added padding for spacing within the container */
-    width: 100%;
-    max-width: 500px; /* Limiting the maximum width for better appearance */
-    background-color: #fff; /* Added a background color for better contrast */
+    margin:100px;
+    box-shadow: 0.3px 0.3px 2px 0.6px rgba(0, 0, 0, 0.2);
+    padding:20px;
+  }
+  .dontation-form div{
+    font-size:17px;
+  }
+  .donation-form input{
+    box-shadow: 0.3px 0.3px 2px 0.6px rgba(0, 0, 0, 0.2);
   }
