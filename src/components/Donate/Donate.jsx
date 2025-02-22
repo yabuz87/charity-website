@@ -31,9 +31,8 @@ const Donate = () => {
             <div className="valid-feedback">Looks good!</div>
           </div>
           <div className="col-md-4">
-            <label htmlFor="validationCustomUsername" className="form-label">Telegram Username</label>
+            <label htmlFor="validationCustomUsername" className="form-label">Email</label>
             <div className="input-group has-validation">
-              <span className="input-group-text" id="inputGroupPrepend">@</span>
               <input type="text" className="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required />
               <div className="invalid-feedback">Please choose a username.</div>
             </div>
@@ -68,7 +67,7 @@ const Donate = () => {
             <div className="invalid-feedback">Please select a valid state.</div>
           </div>
           <div className="col-md-3">
-            <label htmlFor="validationCustom05" className="form-label">Zip</label>
+            <label htmlFor="validationCustom05" className="form-label">phone</label>
             <input type="text" className="form-control" id="validationCustom05" required />
             <div className="invalid-feedback">Please provide a valid zip code.</div>
           </div>
