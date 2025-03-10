@@ -13,15 +13,10 @@ const Signup = () => {
     <div className="Signup-container container-lg">
       <h2 className="text-center">SignUp</h2>
       <form>
-        <label>Last Name:</label>
         <input type="text" placeholder='Last Name here'></input>
-        <label>Phone:</label>
         <input type="phone" placeholder='+251'></input>
-        <label>Email:</label>
         <input type="text" placeholder='Email here'></input>
-        <label>Country:</label>
         <input type="text" placeholder='Country here'></input>
-        <label>Email:</label>
         <input type="text" placeholder='Email here'></input>
         <label className="text-center my-3">Account Type:</label>
         <div className="account-type-choice">

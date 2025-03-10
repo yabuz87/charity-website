@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Typical from 'react-typical';
 import './donate.css';
 import { banks } from "../../assets/imgs/banks";
 

@@ -1,13 +1,24 @@
 .img-page {
-    width: 100%; /* 1/5 of the page */
-    height: 90vh; /* Full height of the viewport */
-    background-image: url('../../assets/imgs/img1.jpg');
-    background-size: cover; /* Ensures the image covers the element without stretching */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Ensures the image doesn't repeat */
-    filter: blur(px);
-    filter: brightness(70%);
-  }
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  background-image: url('../../assets/imgs/img0.jpg');
+  /* background-color: rosybrown; */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Change the opacity as needed */
+}
+
   .img-page .discription-area
   {
     text-align: center;
@@ -25,6 +36,12 @@
       justify-content: center;
       gap:10px;
   }
+  .discription-area {
+    color: white;
+    font-size: 1.2rem; /* Increase font size */
+    font-weight: bold; /* Make it bolder */
+}
+
   .vol-home-button,.donation-home-button
   {
     z-index:100;
@@ -41,10 +58,42 @@
     transition:0.4s;
   }
 
+  .donation-div-with-color-bg
+  {
+    display:flex;
+    align-items:center;
+    justify-content: space-around;
+    padding:50px;
+    margin-bottom:20px;
+    transition:0.4s;
+  }
+  .donation-div-with-color-bg div button:hover{
+    transform: scale(1.03);
+    transition:0.4s;
+  }
 
+  .video-and-text-area
+  {
+      display:grid;
+      grid-template-columns: 1.3fr 1fr;
+      margin:10px;
+      justify-content: center;
+      align-items:center;
 
+  }
+  .cards-container
+  {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+    margin: 5px 150px;
 
+    box-shadow:0px 2px 1px 1px rgba(0,0,0,0.2);
 
+  }
+  
 
   .grid-container
   {
@@ -53,15 +102,16 @@
     margin:50px 150px;
     align-items:center;
     justify-content: center;
-    gap:30px;
+    gap:10px;
     box-shadow: 0px 0.5px 0.5px 0.5px rgba(0,0,0,0.2);
     position:relative;
     top:-100px;
-    padding:30px;
+    padding:10px;
     z-index:12;
     background-color: white;
 
   }
+
   .grid-item
   {
     display:flex;
@@ -77,30 +127,32 @@
     transform:scale(1.02);
     transition:0.3s;
   }
-
-  /* .beneath-home-page
-  {
-    margin-top:70px;
-    display:flex;
-    gap:20px;
-    align-items:center;
+  .image-divs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     justify-content: center;
-
-  } */
-  /* .beneath-home-page div img
-  {
-    width:100%;
-    overflow: none;
-    filter: grayscale(80%);
-    border-radius: 10px;
-    transition:0.3s;
-    height:30vh;
+    column-gap:2px;
+    row-gap:8px;
   }
-  .beneath-home-page div img:hover
+  
+  .image-divs img {
+    width: 100%;
+    height: 200px; /* Set the desired height */
+    object-fit: cover; /* Ensure the image covers the allocated space */
+  }
+  
+
+  .blogs-on-home-page
   {
-    filter:grayscale(0%);
-    transition:0.3s;
-    transform: scale(1.04);
-  } */
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+    margin: 5px 250px;
+    box-shadow:0px 2px 1px 1px rgba(0,0,0,0.2);
+
+  }
+  
   
   

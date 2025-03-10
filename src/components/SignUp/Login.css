@@ -22,11 +22,6 @@
     margin-bottom: 15px; /* Spacing between form groups */
 }
 
-.Signup-container label {
-    margin-bottom: 5px; /* Small margin below labels for spacing */
-    font-weight: bold; /* Making labels bold for better readability */
-    color:green;
-}
 
 .Signup-container input[type="text"],
 .Signup-container input[type="phone"] {

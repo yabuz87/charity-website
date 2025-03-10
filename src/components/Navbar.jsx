@@ -30,7 +30,7 @@ const Navbar = () => {
     showNavbar && (
       <nav className="navbar navbar-expand-lg  bg-body-tertiary fixed-top">
         <div className="container-lg ">
-          <a className="navbar-brand me-5" href="#" onClick={()=>goto("/")}>Logo</a>
+          <a className="navbar-brand me-5" href="#" onClick={()=>goto("/")}><img src="/logo.png" style={{"width":"60px"}}></img><span className={{width:"70px"}}>Corneluis Charity Asossation</span></a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>

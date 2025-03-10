@@ -12,9 +12,7 @@ const Login = () => {
     <div className="Signup-container container-lg mb-3">
       <h2 className="text-center">Login</h2>
       <form>
-        <label>Email</label>
         <input type="text" placeholder='Email here'></input>
-        <label>Password</label>
         <input type="text" placeholder='password'></input>
       </form>
       <div className="hr-container">
@@ -24,7 +22,7 @@ const Login = () => {
       </div>
       <p> <i className="bi bi-google text-center fs-2"></i></p>
       <hr />
-      <h5 className="" onClick={gotoSignup}>Don't you have an account? <span className="text-success">Signup here</span></h5>
+      <h5 className="" onClick={gotoSignup}>Don't you have an account? <span className="text-success">Signup</span></h5>
     </div>
   )
 }

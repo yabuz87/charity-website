@@ -25,9 +25,9 @@
   }
   
   .list a {
-    color: rgb(9, 144, 9);
-    font-weight: 500;
-    font-size: 18px;
+    /* color: black;*/
+    font-weight: 500; 
+    font-size: 15px;
   }
   
   .list::after {
