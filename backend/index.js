@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import path from "path";
 import {getRouter} from './Router/getRouters.js';
 import connect  from "./lib/mongodb.js" ;
+import postRouter from "./Router/postRouters.js";
+import deleteRouters from "./Router/delete.Routers.js";
 
 const app=express();
 const port=process.env.PORT || 3500
@@ -15,6 +17,8 @@ app.get("/",(req,res)=>{
     res.json({"message":"this is a home page"})
 })
 app.use(getRouter);
+app.use(postRouter);
+app.use(deleteRouters);
 
 app.listen(port,()=>{
     console.log(`server is listening port  ${port}`);
