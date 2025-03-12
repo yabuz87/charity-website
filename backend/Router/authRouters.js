@@ -9,3 +9,5 @@ authRouter.post("/login",login);
 authRouter.post("/logout",logout);
 authRouter.put("/updateProfile", protectRoute, updateProfile);
 authRouter.get("/check", protectRoute, checkAuth);
+
+export default authRouter;

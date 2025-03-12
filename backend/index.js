@@ -5,10 +5,11 @@ import path from "path";
 import {getRouter} from './Router/getRouters.js';
 import connect  from "./lib/mongodb.js" ;
 import postRouter from "./Router/postRouters.js";
-import deleteRouters from "./Router/delete.Routers.js";
+import deleteRouters from "./Router/deleteRouters.js";
+import authRouter from "./Router/authRouters.js";
 
 const app=express();
-const port=process.env.PORT || 3500
+const port=process.env.PORT
 
 
 app.use(express.urlencoded({extended:false}));
@@ -19,10 +20,10 @@ app.get("/",(req,res)=>{
 app.use(getRouter);
 app.use(postRouter);
 app.use(deleteRouters);
+app.use(authRouter);
 
 app.listen(port,()=>{
     console.log(`server is listening port  ${port}`);
-    // to do 
     connect();
-    // you connect your mongodb here by calling the method from the model or lib file
+    
 })
