@@ -11,8 +11,12 @@ const gallerySchema=mongoose.Schema({
     title:{
         type:String,
         default:""
+    },
+    photo_id:{
+        type:String,
+        default:""
     }
-},{Timestamps:true})
+},{timestamps:true})
 
 const gallery=mongoose.model("Gallery",gallerySchema);
 export default gallery;

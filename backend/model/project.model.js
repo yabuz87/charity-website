@@ -11,8 +11,13 @@ const projectsSchema=mongoose.Schema({
     },
     photo:{
         type:String,   
+        default:""
+        },
+    photo_id:{
+            type:String,
+            default:""
         }
 
-},{Timestamps:true});
+},{timestamps:true});
 const projects=mongoose.model("Project",projectsSchema);
 export default projects
