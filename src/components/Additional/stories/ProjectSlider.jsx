@@ -15,7 +15,7 @@ function ProjectSlider() {
     cssEase: "linear"
   };
   return (
-    <div className="slider-container">
+    <div className="slider-container container-lg">
       <Slider {...settings}>
       {data.map((data, index) => (
           <div key={index} className="slide" aria-hidden="false">

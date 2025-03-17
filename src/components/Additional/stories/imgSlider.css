@@ -1,14 +1,14 @@
 .slick-prev, .slick-next {
     display: block !important;
-
     background: green !important;
     width: 80px; /* Adjust the width */
-    height: 30px; /* Adjust the height */
+    /* height: 30px; */
     z-index: 1;
   }
   
   .slider-container {
     height: auto;
+    margin-top:15px;
   }
   
   .slide {
@@ -29,3 +29,32 @@
     max-width: none;
   }
   
+  /* Add a fixed height and enable scrolling */
+  .scrollable-content {
+    max-height: 500px; /* Set your desired height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 10px;
+    border-radius: 10px;
+  
+    /* Hide scrollbar for Webkit browsers (Chrome, Safari, etc.) */
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For IE and Edge */
+  }
+  .scrollable-content::-webkit-scrollbar {
+    display: none; /* For Webkit browsers */
+  }
+  
+
+/* Optional styling for individual project cards */
+.project-card {
+  margin-bottom: 20px;
+  /* padding: 15px; */
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.project-card img {
+  max-width: 100%;
+  border-radius: 5px;
+}

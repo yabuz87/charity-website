@@ -20,3 +20,20 @@
   color:white;
   position: relative;
 }
+/* Parent container to manage scrolling */
+.container-fluid {
+  overflow-y: auto; /* Enables scrolling while hiding the scrollbar */
+  scrollbar-width: none; /* Firefox: Hides the scrollbar */
+  -ms-overflow-style: none; /* Internet Explorer/Edge: Hides the scrollbar */
+}
+
+.container-fluid::-webkit-scrollbar {
+  display: none; /* Chrome, Safari: Hides the scrollbar */
+}
+
+/* Optional for a clean layout */
+.row {
+  margin: 0;
+  padding: 0;
+}
+

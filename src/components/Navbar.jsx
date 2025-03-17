@@ -5,21 +5,21 @@ import "./Navbar.css";
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(true);
 
-  const handleScroll = () => {
-    const currentScrollPos = window.pageYOffset;
-    if (currentScrollPos > 200) {
-      setShowNavbar(false);
-    } else {
-      setShowNavbar(true);
-    }
-  };
+  // const handleScroll = () => {
+  //   const currentScrollPos = window.pageYOffset;
+  //   if (currentScrollPos > 200) {
+  //     setShowNavbar(false);
+  //   } else {
+  //     setShowNavbar(true);
+  //   }
+  // };
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, []);
 
   const navigate = useNavigate();
   const goto = (props) => {

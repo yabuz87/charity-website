@@ -1,28 +1,19 @@
 import React,{useEffect} from 'react'
 import img1 from "../../assets/imgs/img1.jpg"
-import img2 from "../../assets/imgs/img3.jpg"
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useNavigate } from 'react-router-dom';
-import img3 from "../../assets/imgs/img2.jpg"
-import VideoFrame from './VideoFrame';
+import useGetStore from '../store/useGetStore';
 import "./home.css"
 import images from '../../assets/img';
 import PieChart from './Piechart';
 import BarChart from './BarChart';
-import Footer from '../Footer/Footer';
+
 
 
 const Home = () => {
 const navigate=useNavigate();
-const data = {
-  labels: ['unEmployed Youth', 'orphanes', 'widowes', 'Aged individuals', 'clean water for society', 'Children'],
-  values: [0, 20, 15, 20, 20, 15],
-};
-const data1={
-  labels:['admin cost','aid cost'],
-  values:[19,81],
-}
+const{numericalDataForFinanceChart,numericalDataForFocusingAreaChart}=useGetStore();
 const handleNavigate=(props)=>{
 navigate(props);
 
@@ -144,7 +135,7 @@ navigate(props);
    <h3>We are helping people to alleviate</h3>
    <p>by being a donator to us you become a part of our organization</p>
    </div>
-   <div className="col-5 ">
+   <div className="col-5" onClick={()=>{handleNavigate("donate")}}>
 <button className="border-light text-light btn"> Donate and Help</button>
    </div>
     </div>
@@ -191,7 +182,7 @@ navigate(props);
     </div>
 
     <div className="container d-flex justify-content-center align-items-center full-height m-5">
-    <button className="btn btn-primary">ReadMore <i className="bi bi-arrow-right-circle-fill"></i></button>
+    <button className="btn btn-primary" onClick={()=>{handleNavigate("projects")}}>ReadMore <i className="bi bi-arrow-right-circle-fill"></i></button>
   </div>
 
 
@@ -201,14 +192,14 @@ navigate(props);
 {/* section five numerical data representation */}
 
 
-   <h1 className="text-center mb-3">Numberical Data on Focusing Area</h1>
+   <h1 className="text-center mb-3">Numerical Data on Focusing Area</h1>
    <div className="container d-flex justify-content-center align-items-center border p-3">
   <div className="row container d-flex justify-content-center" style={{ width: "70%" }}>
     <div className="col-5">
-      <PieChart data={data} />
+      <PieChart data={numericalDataForFocusingAreaChart} />
     </div>
     <div className="col-6">
-      <BarChart data={data} />
+      <BarChart data={numericalDataForFocusingAreaChart} />
     </div>
   </div>
 </div>
@@ -217,10 +208,10 @@ navigate(props);
  <div className="container d-flex justify-content-center align-items-center border p-3">
   <div className="row container d-flex justify-content-center" style={{ width: "60%" }}>
     <div className="col-5">
-      <PieChart data={data1} />
+      <PieChart data={numericalDataForFinanceChart} />
     </div>
     <div className="col-6">
-      <BarChart data={data1} />
+      <BarChart data={numericalDataForFinanceChart} />
     </div>
   </div>
 </div>
@@ -228,15 +219,8 @@ navigate(props);
 
 
 
- {/* section six video trailer for documentaion */}
-
     
- 
-
-
-
-
-{/* section seven Gallery trailer section */}
+{/* section six Gallery trailer section */}
 
 <h2 className="text-center">Activity in Frame</h2>
 <p className="text-center">this is a few image from the project and impact</p>
@@ -251,19 +235,13 @@ navigate(props);
     })
   }
 </div>
+
+
+
+{/* section seven */}
 <div className="container d-flex justify-content-center align-items-center full-height m-5">
-    <button className="btn btn-primary">seeMore <i className="bi bi-arrow-right-circle-fill"></i></button>
+    <button className="btn btn-primary" onClick={()=>{handleNavigate("gallery")}}>seeMore <i className="bi bi-arrow-right-circle-fill"></i></button>
   </div>
-
-
-
-  {/* <div className="video-and-text-area">
-    <div>
-      <p>here is a short film made from different projects that had been done in our society that sounds a good and great wayhere is a short film made from different projects that had been done in our society that sounds a good and great wayhere is a short film made from different projects that had been done in our society that sounds a good and great wayhere is a short film made from different projects that had been done in our society that sounds a good and great wayhere is a short film made from different projects that had been done in our society that sounds a good and great wayhere is a short film made from different projects that had been done in our society that sounds a good and great way</p>
-    </div>
-    <div className="rounded p-1"><VideoFrame height="400px" src="https://www.youtube.com/embed/q5m09rqOoxE"/></div>
-   </div>  */}
-    {/* section eight blog trailer section */}
 
      <div className="container-fluid">
      <h2 className="text-center">Latest News</h2>
@@ -291,7 +269,7 @@ navigate(props);
   </div> 
     </div>
     <div className="container d-flex justify-content-center align-items-center full-height m-5">
-    <button className="btn btn-primary"><i className="bi bi-arrow-right-circle-fill"></i></button>
+    <button className="btn btn-primary" onClick={()=>{handleNavigate("blog")}}><i className="bi bi-arrow-right-circle-fill"></i></button>
   </div>
      </div>
           
@@ -300,26 +278,3 @@ navigate(props);
   )}
 
 export default Home
-
-
-
-
-
-{/* <h1 className="text-center text-success">Our Programs</h1> */}
-{/* <h4 className="text-center container-lg">Thanks to our specially trained staff, whose efforts are supported and amplified by hundreds of committed volunteers and donors, Horizons provides hope and opportunity to the families we serve.</h4> */}
-// <div className="container-lg g-1 row d-flex">
-// <div className="row container-lg">
-// <div className="col-md-6">
-//       <img src={img1} className="img-fluid"></img>
-//       <h3>specially trained staff</h3>
-//       <p>specially trained staffspecially trained staffspecially trained staffvspecially trained staffspecially trained staffspecially trained staff</p>
-//     </div>
-//     <div className="col-md-6">
-//       <img src={img1} className="img-fluid"></img>
-//       <h3>specially trained staff</h3>
-//       <p>specially trained staffspecially trained staffspecially trained staffvspecially trained staffspecially trained staffspecially trained staff</p>
-//     </div>
-// </div>
-    
-    
-//     </div>

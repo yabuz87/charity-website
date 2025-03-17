@@ -1,26 +1,8 @@
 import React, { useState } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { data } from "../../../assets/imgs/project";
 import "./imgSlider.css";
 
 function ProjectDescriptionSlider() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    vertical: true,
-    verticalSwiping: true,
-    beforeChange: function (currentSlide, nextSlide) {
-      console.log("before change", currentSlide, nextSlide);
-    },
-    afterChange: function (currentSlide) {
-      console.log("after change", currentSlide);
-    }
-  };
-
   const [readMoreStates, setReadMoreStates] = useState({});
 
   const handleReadMore = (index) => {
@@ -31,29 +13,30 @@ function ProjectDescriptionSlider() {
   };
 
   return (
-    <div className="slider-container">
-      <Slider {...settings}>
+    <div className="slider-container container-fluid">
+      <div className="scrollable-content">
         {data.map((proj, index) => (
-          <div className="" key={index}>
+          <div className="project-card" key={index}>
             <h3 className="text-center text-dark">{proj.title}</h3>
             <div className="row d-flex align-items-center">
               <p className="col-md-7" style={{ margin: "5px" }}>
                 {proj.description}
-                <span className={`${readMoreStates[index] ? 'd-block' : 'd-none'}`}>{proj.readMore}</span>
+                <span className={`${readMoreStates[index] ? 'd-block' : 'd-none'}`}>
+                  {proj.readMore}
+                </span>
               </p>
               <img src={proj.img} className="col-md-4" alt={proj.title} />
             </div>
             <button
-              className="btn btn-success"
-              style={{ marginTop: "10px", display: "flex", alignItems: "center" }}
+              className="btn btn-dark m-2"
+              style={{  display: "flex", alignItems: "center" }}
               onClick={() => handleReadMore(index)}
             >
               {readMoreStates[index] ? "Read Less" : "Read More"}
             </button>
-            <p></p>
           </div>
         ))}
-      </Slider>
+      </div>
     </div>
   );
 }
