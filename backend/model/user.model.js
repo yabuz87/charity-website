@@ -8,10 +8,11 @@ const userSchema = mongoose.Schema({
     email: {
         type: String,
         required: true,
+        unique: true, // Ensure email is unique
     },
     password: {
         type: String,
-        required: true
+        required: true,
     },
     phone: {
         type: String,
@@ -19,12 +20,12 @@ const userSchema = mongoose.Schema({
     },
     profile: {
         type: String,
-        default: ""
+        default: "",
     },
     membership: {
         type: String,
-        enum: ["permanent", "temporary"],
-        required: true
+        enum: ["Permanent Donator", "One time Donator"],
+        default: "Permanent Donator",
     }
 }, { timestamps: true });
 

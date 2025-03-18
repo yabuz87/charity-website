@@ -61,6 +61,7 @@ Warm regards,
 `;
         // sendEmail(newUser.email,subject,text);
         } else {
+            
             res.status(400).json({ message: "Invalid user data" });
         }
 

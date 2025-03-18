@@ -9,12 +9,14 @@ import connect  from "./lib/mongodb.js" ;
 import postRouter from "./Router/postRouters.js";
 import deleteRouters from "./Router/deleteRouters.js";
 import authRouter from "./Router/authRouters.js";
+import cookieParser from "cookie-parser";
 
 const app=express();
 const port=process.env.PORT
 
 
 app.use(express.urlencoded({extended:false}));
+app.use(cookieParser());
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(express.json());
 app.use(cors({
