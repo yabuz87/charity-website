@@ -59,7 +59,7 @@ Welcome to our community! We are delighted to have you join us and truly believe
 Warm regards,
 [Admins of CCA]
 `;
-        // sendEmail(newUser.email,subject,text);
+        sendEmail(newUser.email,subject,text);
         } else {
             
             res.status(400).json({ message: "Invalid user data" });
