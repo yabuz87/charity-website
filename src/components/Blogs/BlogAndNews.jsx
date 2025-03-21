@@ -39,7 +39,7 @@ const BlogAndNews = () => {
 
   const chooseToRead = (arrayIndex) => {
     if (!blogData || !blogData[arrayIndex]) {
-      return <p>No blog post selected.</p>; // Fallback if arrayIndex is out-of-bounds
+      return <p className="text-center">No blog post selected.</p>; // Fallback if arrayIndex is out-of-bounds
     }
 
     const blog = blogData[arrayIndex];
@@ -53,7 +53,7 @@ const BlogAndNews = () => {
             alt={blog.title}
           />
         </div>
-        <h4>{blog.title}</h4>
+        <h4 className="mt-3">{blog.title}</h4>
         <p>Uploaded Date: {formatDate(blog.createdAt)}</p>
         <p>{blog.description}</p>
         <div className="blog-footer">
@@ -71,6 +71,15 @@ const BlogAndNews = () => {
     <div><LoaderIcon /></div>
   ) : (
     <div className="blog-section container-lg">
+    <div className="left-section">
+    <h2 className="text-center mt-5">News & Blogs</h2>
+        <ul>
+          <li>our Impact News</li>
+          <li>Project News </li>
+          <li>New Blog</li>
+          <li>upcomming Plan News</li>
+        </ul>
+    </div>
       <div className="centeral-section">
         {chooseToRead(arrayIndex)}
       </div>
@@ -91,20 +100,7 @@ const BlogAndNews = () => {
                 />
               </div>
               <h4>{item.title}</h4>
-              <p>Uploaded Date: {formatDate(item.createdAt)}</p>
-              <p>
-                {expanded[index]
-                  ? item.description
-                  : getFirstFiveSentences(item.description)}
-              </p>
-              {item.description.split('.').filter((sentence) => sentence.trim() !== '').length > 5 && (
-                <button className="btn mb-2" onClick={(e) => {
-                  e.stopPropagation(); // Prevent parent `onClick` from triggering
-                  handleReadMore(index);
-                }}>
-                  {expanded[index] ? 'Read Less' : 'Read More'}
-                </button>
-              )}
+              
               <div className="blog-footer">
                 <div></div>
               </div>
@@ -119,3 +115,20 @@ const BlogAndNews = () => {
 };
 
 export default BlogAndNews;
+
+
+
+
+// {/* <p>
+//                 {expanded[index]
+//                   ? item.description
+//                   : getFirstFiveSentences(item.description)}
+//               </p>
+//               {item.description.split('.').filter((sentence) => sentence.trim() !== '').length > 5 && (
+//                 <button className="btn mb-2" onClick={(e) => {
+//                   e.stopPropagation(); // Prevent parent `onClick` from triggering
+//                   handleReadMore(index);
+//                 }}>
+//                   {expanded[index] ? 'Read Less' : 'Read More'}
+//                 </button>
+//               )} */}

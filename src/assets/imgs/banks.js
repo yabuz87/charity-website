@@ -8,35 +8,41 @@ import paypal from "./download (4).png"
 
 export const banks=[
     {
-        name:"CBE",
+        name:"Commercial Bank of Ethiopai",
         img:CBE,
-        accNo:1000395714094
+        accNo:1000395714094,
+        accName:"CoCA"
     },
     {
-        name:"Birhan",
+        name:"Birhan Bank",
         img:birhan,
-        accNo:1000395714094
+        accNo:1000395714094,
+        accName:"CoCA"
     },
     {
-        name:"Abisiniya",
+        name:"Abisiniya Bank",
         img:abiyiniya,
-        accNo:1000395714094
+        accNo:1000395714094,
+        accName:"CoCA"
     },
     {
-        name:"Awash",
+        name:"Awash Bank",
         img:awash,
-        accNo:1000395714094
+        accNo:1000395714094,
+        accName:"CoCA"
     },
     {
         name:"Telebirr",
         img:telebirr,
-        accNo:1000395714094
+        accNo:1000395714094,
+        accName:"CoCA"
 
     },
     {
         name:"payPal",
         img:paypal,
-        accNo:"acc@gmail.com"
+        accNo:"acc@gmail.com",
+        accName:"CoCA"
     },
     
     

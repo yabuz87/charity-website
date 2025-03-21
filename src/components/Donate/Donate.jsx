@@ -1,9 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import './donate.css';
+import React, { useState } from 'react';
 import { banks } from "../../assets/imgs/banks";
+import './donate.css';
 
 const Donate = () => {
   const [termsVisible, setTermsVisible] = useState(false);
+  const [selectedBank,setSelectBank]=useState({
+    name:'',
+    index:null
+  });
+
+  const handleBankSelect = (bank, index) => {
+    setSelectBank({
+      ...selectedBank, // Spread the current state
+      name: bank.name, // Update the name
+      index: index,    // Update the index
+    });
+  };
+  
 
   const handleTermsVisibility = (e) => {
     e.preventDefault();
@@ -18,32 +31,25 @@ const Donate = () => {
       <p className="p-beneath-sub-title">Here is the form you can fill in with your appropriate choice to help this society and make a good impact on others</p>
       <h2 className="text-center">Donation Form</h2>
       <div className="donation-form">
-        <form className="row g-3 needs-validation" noValidate>
-          <div className="col-md-4">
-            <label htmlFor="validationCustom01" className="form-label">First name</label>
-            <input type="text" className="form-control" id="validationCustom01" required />
-            <div className="valid-feedback">Looks good!</div>
+        <form className="needs-validation align-items-center justify-content-center border-none" noValidate>
+          <div className="">
+            <input type="text" className="form-control w-50" id="validationCustom01" placeholder="First Name" required />
+          </div>
+          <div className="">
+            <input type="text" className="form-control w-50" id="validationCustom02" placeholder="Last name" required />
           </div>
           <div className="col-md-4">
-            <label htmlFor="validationCustom02" className="form-label">Last name</label>
-            <input type="text" className="form-control" id="validationCustom02" required />
-            <div className="valid-feedback">Looks good!</div>
-          </div>
-          <div className="col-md-4">
-            <label htmlFor="validationCustomUsername" className="form-label">Email</label>
             <div className="input-group has-validation">
-              <input type="text" className="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required />
+              <input type="text" className="form-control  w-50" id="validationCustomUsername" placeholder="Email" aria-describedby="inputGroupPrepend" required />
               <div className="invalid-feedback">Please choose a username.</div>
             </div>
           </div>
           <div className="col-md-6">
-            <label htmlFor="validationCustom03" className="form-label">City</label>
-            <input type="text" className="form-control" id="validationCustom03" required />
+            <input type="text" className="form-control" id="validationCustom03" placeholder="City" required />
             <div className="invalid-feedback">Please provide a valid city.</div>
           </div>
           <div className="col-md-3">
-            <label htmlFor="validationCustom04" className="form-label">State</label>
-            <select className="form-select" id="validationCustom04" required>
+            <select className="form-select" id="validationCustom04"  placeholder="State" required>
               <option selected disabled value="">Choose...</option>
               <option>United States Of America</option>
               <option>Ethiopia</option>
@@ -66,21 +72,43 @@ const Donate = () => {
             <div className="invalid-feedback">Please select a valid state.</div>
           </div>
           <div className="col-md-3">
-            <label htmlFor="validationCustom05" className="form-label">phone</label>
-            <input type="text" className="form-control" id="validationCustom05" required />
-            <div className="invalid-feedback">Please provide a valid zip code.</div>
+            <input type="text" className="form-control" placeholder="phone" id="validationCustom05" required />
+            <div className="invalid-feedback">Please provide a valid phone.</div>
           </div>
           <div>
             <h4 className="text-center">Donating methods</h4>
-            <div className="row">
-              {banks.map((oneBank, index) => (
-                <div className="col-md-3  border m-1 bank-icon" key={index}>
-                  <img src={oneBank.img} alt={oneBank.name} className="mb-2"></img>
-                  <p className="fw-bold">{oneBank.name}</p>
-                  {oneBank.accNo && <p className="fw-bold ">Account: {oneBank.accNo}</p>}
-                </div>
-              ))}
-            </div>
+            <div className="bank-seletion-part banks-container">
+         
+  {banks.map((oneBank, index) => (
+    <div key={index} className="border">
+      <div
+        className={`each-bank-container  bank-icon ${
+          selectedBank.index === index ? 'selected-bank-class' : ''
+        }`}
+      >
+       <div>
+       <img src={oneBank.img} alt={oneBank.name} className="mb-2 banks-img" />
+       
+       </div>
+        <div className="in-one-bank-div">
+        <p className="">Name: {oneBank.name}</p>
+        <p>Account Name: {oneBank.accName}</p>
+        <p className="">Account: {oneBank.accNo}</p>
+        
+        </div>
+        
+      </div>
+      <button
+          type="button"
+          className="btn btn-secondary d-flex align-items-center justify-content-center"
+          onClick={() => handleBankSelect(oneBank.name, index)} // Pass the bank and index here
+        >
+          {selectedBank.index === index ? 'Selected' : 'Select'}
+        </button>
+    </div>
+  ))}
+</div>
+
           </div>
           <div className="col-12">
             <button className="btn btn-success" onClick={handleTermsVisibility}>

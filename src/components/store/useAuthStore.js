@@ -11,7 +11,7 @@ export const useAuthStore = create((set) => ({
 
   checkAuth: async () => {
     try {
-      const response = await axiosInstance("auth/check");
+      const response = await axiosInstance.get("auth/check");
       set({ authUser: response.data });
     } catch (err) {
       console.error("Error in checkAuth method:", err);
@@ -25,13 +25,13 @@ export const useAuthStore = create((set) => ({
   signup: async (data) => {
     try {
       set({ isSigningUp: true });
-      const response = await axiosInstance.post("/auth/signup", data);
+      const response = await axiosInstance.post("auth/signup",data);
       
 
       toast.success("Account has been created successfully! 🎉");
       set({ authUser:response.data});
     } catch (error) {
-      console.error("Error in signup method:", error);
+      console.log("Error in signup method:",error);
 
       // Ensure error messages are meaningful
       const errorMessage = error.response?.data?.message || error.message || "An error occurred during signup.";
@@ -42,7 +42,7 @@ export const useAuthStore = create((set) => ({
   },
   logout:async ()=>{
    try{
-    await axiosInstance.post("/auth/logout");
+    await axiosInstance.post("auth/logout");
     set({authUser:null});
     toast.success("Logged out successfully");
    }catch(error)
@@ -57,7 +57,7 @@ export const useAuthStore = create((set) => ({
       set({
         isLoggingIn:true
       })
-    const response=await axiosInstance.post("/auth/login",data);
+    const response=await axiosInstance.post("auth/login",data);
     set({authUser:response.data});
     toast.success("you're logged in successfully");
     

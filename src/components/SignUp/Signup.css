@@ -38,19 +38,20 @@
 
 .account-type-choice {
     display: flex;
+    gap:100px;
     flex-direction: row;
 }
 
 .account-type-label {
     font-weight: 100; /* Setting font-weight to normal for radio button labels */
-    width:60px;
+    width:100%;
     margin-right: 10px; /* Adding space between the label and radio button */
 }
 
 .account-type-input {
-    width: 20px; /* Consistent width for radio buttons */
+    /* width: 40px; Consistent width for radio buttons */
     height: 20px; /* Consistent height for radio buttons */
-    margin-right: 10px; /* Adding space between the radio button and the label */
+    margin-right: 30px; /* Adding space between the radio button and the label */
 }
 
 .Signup-container h2 {
