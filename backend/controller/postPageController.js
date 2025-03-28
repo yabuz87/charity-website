@@ -7,18 +7,19 @@ export const postBlog = async (req, res) => {
   try {
     const { description, title, photo } = req.body;
   
-    // if (!photo) {
+    if (!photo) {
      
-    //   return res.status(404).json({ "message": "Profile picture is required" });
-    // }
-    // const uploadResponse = await cloudinary.uploader.upload(photo);
-    // const photoUrl = uploadResponse.secure_url;
-    // const publicId=uploadResponse.public_id;
+      return res.status(404).json({ "message": "Profile picture is required" });
+    }
+    const uploadResponse = await cloudinary.uploader.upload(photo);
+    const photoUrl = uploadResponse.secure_url;
+    const publicId=uploadResponse.public_id;
 
     const newblog = new Blogs({ 
        description,
        title,
-       photo_id:""
+       photo_id:publicId,
+       photo:photoUrl
       });
 
     await newblog.save();
@@ -32,18 +33,19 @@ export const postBlog = async (req, res) => {
 
 export const postGallery = async (req, res) => {
   try {
-    const { photo, text, title } = req.body;
-    // if (!photo) {
+    const { photo, description, title } = req.body;
+    if (!photo) {
      
-    //   return res.status(404).json({ "message": "Profile picture is required" });
-    // }
-    // const uploadResponse = await cloudinary.uploader.upload(photo);
-    // const photoUrl = uploadResponse.secure_url;
-    // const publicId=uploadResponse.public_id;
+      return res.status(404).json({ "message": "Profile picture is required" });
+    }
+    const uploadResponse = await cloudinary.uploader.upload(photo);
+    const photoUrl = uploadResponse.secure_url;
+    const publicId=uploadResponse.public_id;
     const newGallery = new Gallery({
        description,
        title,
-       photo_id:""
+       photo:photoUrl,
+       photo_id:publicId
       });
 
     await newGallery.save();
@@ -60,17 +62,18 @@ export const postProject = async (req, res) => {
     const { title, photo, description } = req.body;
      
     
-    // if (!photo) {
+    if (!photo) {
      
-    //   return res.status(404).json({ "message": "Profile picture is required" });
-    // }
-    // const uploadResponse = await cloudinary.uploader.upload(photo);
-    // const photoUrl = uploadResponse.secure_url;
-    // const publicId=uploadResponse.public_id;
+      return res.status(404).json({ "message": "Profile picture is required" });
+    }
+    const uploadResponse = await cloudinary.uploader.upload(photo);
+    const photoUrl = uploadResponse.secure_url;
+    const publicId=uploadResponse.public_id;
     const newProject = new Project({
       title,
       description,
-      photo_id:"",
+      photo:photoUrl,
+      photo_id:publicId,
     });
     await newProject.save();
     res.status(201).json(newProject);
