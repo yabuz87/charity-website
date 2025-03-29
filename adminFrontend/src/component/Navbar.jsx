@@ -18,7 +18,7 @@ const Navbar = () => {
         <div className="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
           <ul className="navbar-nav mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" onClick={() => goto("/home")}>Home</a>
+              <a className="nav-link active" aria-current="page" onClick={() => goto("/")}>Home</a>
             </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

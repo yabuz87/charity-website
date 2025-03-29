@@ -30,7 +30,7 @@ const GalleryPost = () => {
 
   return (
     <>
-      <h3 className="text-center">Upload Blog</h3>
+      <h3 className="text-center">Upload Gallery</h3>
       <form className="text-center" onSubmit={handleSubmit} encType="multipart/form-data">
         <p>
           <input
