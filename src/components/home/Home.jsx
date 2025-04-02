@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import useGetStore from '../store/useGetStore';
 import "./home.css"
 import images from '../../assets/img';
-import PieChart from './Piechart';
+import PieChart from './PieChart';
 import BarChart from './BarChart';
 
 
