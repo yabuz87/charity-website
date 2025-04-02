@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import "./home.css";
 import useGetStore from '../store/useGetStore';
+import useDeleteStore from "../store/useDeleteStore.js"
 
 const Home = () => {
   const { galleryData, projectData, blogData, getProjects, getGalleries, getBlogs } = useGetStore();
+  const {deleteGallery,deleteBlog,deleteProject,is}=useDeleteStore();
   const [loading, setLoading] = useState(true);
 
   // Fetch data on component mount
@@ -21,7 +23,6 @@ const Home = () => {
     };
     fetchData();
   }, [getBlogs, getGalleries, getProjects]);
-
   if (loading) {
     return <p className="text-center">Loading...</p>;
   }

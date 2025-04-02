@@ -1,5 +1,6 @@
 import express from "express";
-import { deleteGallery } from "../controller/deleteController.js";
+import { deleteGallery, deleteProject } from "../controller/deleteController.js";
 const deleteRouters=express.Router();
-deleteRouters.delete("/deletegallery/:id",deleteGallery);
+deleteRouters.delete("/deleteGallery/:id",deleteGallery);
+deleteRouters.delete("/deleteProject/:id",deleteProject);
 export default deleteRouters;
