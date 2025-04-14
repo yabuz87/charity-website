@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "./home.css";
 import useGetStore from '../store/useGetStore';
-import useDeleteStore from "../store/useDeleteStore.js"
+import {useDeleteStore} from "../store/useDeleteStore.js"
 
 const Home = () => {
   const { galleryData, projectData, blogData, getProjects, getGalleries, getBlogs } = useGetStore();
