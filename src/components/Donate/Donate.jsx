@@ -35,13 +35,13 @@ const Donate = () => {
          
           
           <div>
-            <h4 className="text-center">Donating methods</h4>
+            <h4 className="text-center my-3">Donating methods</h4>
             <div className="bank-seletion-part banks-container">
          
   {banks.map((oneBank, index) => (
     <div key={index} className="border m-1  rounded-1">
       <div
-        className={`each-bank-container  bank-icon ${
+        className={`each-bank-container row  bank-icon ${
           selectedBank.index === index ? 'selected-bank-class' : ''
         }`}
       >
@@ -49,7 +49,7 @@ const Donate = () => {
        <img src={oneBank.img} alt={oneBank.name} className=" banks-img  " />
        
        </div>
-        <div className="in-one-bank-div">
+        <div className="in-one-bank-div md-col-4 sm-col-6">
         <p className="">Name: {oneBank.name}</p>
         <p>Account Name: {oneBank.accName}</p>
         <p className="">Account: {oneBank.accNo}</p>
@@ -60,7 +60,7 @@ const Donate = () => {
       <div className="d-flex justify-content-center align-items-center" >
   <button
     type="button"
-    className={`btn btn-success my-1  ${selectedBank.index} === index ?`}
+    className={`btn  my-1  ${selectedBank.index === index ? 'btn-secondary' : 'btn-success'} `}
     onClick={() => handleBankSelect(oneBank.name, index)}
   >
     {selectedBank.index === index ? 'Selected' : 'Select'}
@@ -90,8 +90,8 @@ const Donate = () => {
           </button>
         </div>
         {/* Checkbox Section */}
-        <div className="form-check">
-          <input className="form-check-input" type="checkbox" id="invalidCheck" required />
+        <div className="form-check pt-2">
+          <input className="form-check-input " style={{"cursor":"pointer"}} type="checkbox" id="invalidCheck" required />
           <label className="form-check-label" htmlFor="invalidCheck">
             Agree to terms and conditions
           </label>
