@@ -1,6 +1,6 @@
 import React from 'react'
 import "./ProjectAndImpact.css"
-import ProjectSlider from './ProjectSlider'
+// import ProjectSlider from './ProjectSlider'
 import ProjectDescriptionSlider from './ProjectDescriptionSlider'
 import images from '../../../assets/img'
 import GallerySlider from '../gallery/GallerySlider'
