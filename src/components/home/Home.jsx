@@ -1,12 +1,11 @@
 import React,{useEffect} from 'react'
 import img1 from "../../assets/imgs/img1.jpg"
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import useGetStore from '../store/useGetStore';
 import "./home.css"
 import images from '../../assets/img';
-import PieChart from './Piechart';
+import PieChart from './PieChart';
 import BarChart from './BarChart';
 
 
