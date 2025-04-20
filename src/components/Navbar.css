@@ -1,0 +1,76 @@
+.nav {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 50px;
+    left: 0;
+  }
+  
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: space-around;
+    margin: 10px 20px;
+  }
+  
+  .list {
+    text-decoration: none;
+    margin-top: 5px;
+    font-size: 17px;
+    padding: 2px;
+    list-style: none;
+    position: relative;
+    transition: 0.3s;
+  }
+  
+  .list a {
+    font-weight: 500; 
+    font-size: 15px;
+  }
+  
+  .list::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: -2px;
+    background-color: black;
+    transition: width 0.3s;
+  }
+  
+  .list:hover::after {
+    width: 60%;
+  }
+  
+  ul {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .right-section {
+    margin-left: 10px;
+    display: flex;
+    gap: 30px;
+  }
+  
+  /* Ensure the button displays its content as a flex container */
+  button.btn {
+    display: flex;
+    align-items: center; /* Vertically centers the icon and text */
+    justify-content: center; /* Horizontally centers the icon and text */
+    gap: 8px; /* Adds space between icon and text (alternative to margin-right) */
+  }
+  
+  button.btn .bi {
+    font-size: 1.2em; /* Adjust icon size if necessary */
+  }
+  
+  /* Ensure the dropdown menu is displayed on hover */
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  

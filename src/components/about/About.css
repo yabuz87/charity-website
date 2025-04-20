@@ -1,0 +1,39 @@
+.img-Page {
+  width: 100%; /* Full width */
+  height: 70vh; /* Full height of the viewport */
+  margin-top:80px;
+  background: url('../../assets/imgs/img3.jpg');
+  background-size: cover; /* Ensures the image covers the element without stretching */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Ensures the image doesn't repeat */
+  filter: brightness(70%);
+}
+.about-discription-container
+{
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+.title-about,.sub-title{
+  top:-300px;
+  text-align: center;
+  color:white;
+  position: relative;
+}
+/* Parent container to manage scrolling */
+.container-fluid {
+  overflow-y: auto; /* Enables scrolling while hiding the scrollbar */
+  scrollbar-width: none; /* Firefox: Hides the scrollbar */
+  -ms-overflow-style: none; /* Internet Explorer/Edge: Hides the scrollbar */
+}
+
+.container-fluid::-webkit-scrollbar {
+  display: none; /* Chrome, Safari: Hides the scrollbar */
+}
+
+/* Optional for a clean layout */
+.row {
+  margin: 0;
+  padding: 0;
+}
+

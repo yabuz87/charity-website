@@ -1,0 +1,87 @@
+.slider-container {
+  width: 100%;
+  height: 80vh;
+  position: relative;
+  margin: 50px auto;
+  border: 2px solid #ddd;
+  /* border-radius: 10px; */
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title-on {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  padding: 3px;
+  margin-top: 5px;
+}
+
+.slide {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: auto;
+  /* border-radius: 10px 10px 0 0; */
+}
+
+.caption {
+  position: absolute;
+  left: 50%;
+  bottom: 70%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255);
+  padding: 0 10px;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.custom-arrow {
+  display: block;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.custom-next-arrow {
+  right: 10px;
+}
+
+.custom-prev-arrow {
+  left: 10px;
+  z-index:30;
+}
+
+.custom-arrow::before {
+  color: white;
+  font-size: 20px;
+  line-height: 40px;
+}
+
+.custom-dots {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  z-index:31;
+  color:black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

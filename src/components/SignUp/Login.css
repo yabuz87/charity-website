@@ -1,0 +1,77 @@
+.Signup-container {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centering vertically */
+    align-items: center; /* Centering horizontally */
+    box-shadow: 0.3px 0.3px 2px 0.3px rgba(0, 0, 0, 0.2);
+    padding: 20px; /* Added padding for spacing within the container */
+    width: 100%;
+    max-width: 500px; /* Limiting the maximum width for better appearance */
+    background-color: #fff; /* Added a background color for better contrast */
+}
+
+.Signup-container form {
+    width: 100%; /* Ensuring the form takes full width */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: start; /* Aligning items to the left */
+    margin-bottom: 15px; /* Spacing between form groups */
+}
+
+
+.Signup-container input[type="text"],
+.Signup-container input[type="phone"] {
+    width: 100%; /* Full width input fields */
+    padding: 10px; /* Padding inside input fields for better look */
+    margin-bottom: 15px; /* Margin below input fields for spacing */
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 4px; /* Rounded corners */
+}
+
+.account-type-choice {
+    display: flex;
+    flex-direction: row;
+}
+
+.account-type-label {
+    font-weight: 100; /* Setting font-weight to normal for radio button labels */
+    width:60px;
+    color:black;
+    margin-right: 10px; /* Adding space between the label and radio button */
+}
+
+.account-type-input {
+    width: 20px; /* Consistent width for radio buttons */
+    height: 20px; /* Consistent height for radio buttons */
+    margin-right: 10px; /* Adding space between the radio button and the label */
+}
+
+.Signup-container h2 {
+    margin-bottom: 20px; /* Spacing below the heading */
+}
+
+.Signup-container h3 {
+    margin-top: 30px; /* Spacing above the sub-heading */
+}
+
+.hr-container {
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .hr-container hr {
+    flex: 1;
+    border: none;
+    border-top: 1px solid #000;
+  }
+  
+  .hr-container .or-text {
+    margin: 0 10px;
+    white-space: nowrap;
+  }
+  
