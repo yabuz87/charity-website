@@ -1,14 +1,20 @@
 import Blogs from "../model/blogs.model.js";
 import Gallery from "../model/gallery.model.js";
+import Admin from "../model/admin.model.js";
 import Project from "../model/project.model.js";
 import cloudinary from "../lib/cloudinary.js";
 
 export const deleteGallery = async (req, res) => {
     try {
-        const { id } = req.params;
-         
-       
+        const adminId=req.user._id;
+        const { id } = req.params;   
         const item = await Gallery.findById(id);
+        const admin=await Admin.findById(adminId);
+        if(!admin)
+        {
+            return res.status(401).json({message:"unathorized admin"});
+        }
+
         if (!item) {
             return res.status(404).json({ "message": "Gallery not found" });
         }
@@ -41,13 +47,17 @@ export const deleteProject=async (req,res)=>
 
     try {
         const {id } = req.params;
-         
-       
+        const adminId=req.user._id;
+        const admin=await Admin.findById(adminId);
         const item = await Project.findById(id);
+        if(!admin)
+            {
+                return res.status(401).json({message:"unathorized admin"});
+            }
         if (!item) {
             return res.status(404).json({ "message": "Gallery not found" });
         }
-
+        
         // Extract the publicId from the image URL (adjust based on your URL format)
         const publicId = item.photo_id;
 
@@ -74,9 +84,13 @@ export const deleteBlog=async (req,res)=>
 {
 
     try {
+        const adminId=req.user._id;
+        const admin=await Admin.findById(adminId);
+        if(!admin)
+        {
+            return res.status(401).json({message:"unauthorized admin"});
+        }
         const {id } = req.params;
-         
-       
         const item = await Blogs.findById(id);
         if (!item) {
             return res.status(404).json({ "message": "Gallery not found" });
