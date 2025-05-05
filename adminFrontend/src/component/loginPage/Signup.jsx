@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Signup.css";
 import { useNavigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import { useAuthStore } from "../store/useAuthStore";
+import { useAuthStore } from "../../store/useAuthStore";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -10,10 +10,8 @@ const Signup = () => {
 
   const [signUpData, setSignUpData] = useState({
     fullName: "",
-    phone: "",
     email: "",
     password: "",
-    membership: "",
   });
 
   const [confirmedPassword, setConfirmedPassword] = useState("");
@@ -23,23 +21,29 @@ const Signup = () => {
     navigate("/signupOrlogin");
   };
 
-  // Function to validate email and phone number
+  // Function to validate inputs
   const validateInputs = () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^\+251\d{9}$/;
+    if (Object.values(signUpData).some((field) => field.trim() === "")) {
+      alert("Please fill out all the fields!");
+      return false;
+    }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(signUpData.email)) {
       alert("Please enter a valid email address!");
       return false;
     }
-    if (!phoneRegex.test(signUpData.phone)) {
-      alert("Please enter a valid phone number (e.g., +251...)!");
+
+    if (signUpData.password.length < 6) {
+      alert("Password must be at least 6 characters!");
       return false;
     }
+
     if (signUpData.password !== confirmedPassword) {
       alert("Passwords do not match!");
       return false;
     }
+
     return true;
   };
 
@@ -51,8 +55,14 @@ const Signup = () => {
 
     try {
       await signup(signUpData);
+      console.log("entered into try block")
+      alert("Signup successful!");
     } catch (error) {
-      alert(error.response?.data?.message || "Signup failed! Please try again.");
+      console.error(error.message);
+      alert(
+        error.response?.data?.message ||
+        "Signup failed! Please try again later."
+      );
     }
   };
 
@@ -62,7 +72,6 @@ const Signup = () => {
   );
 
   return (
-    
     <div className="Signup-container container-lg">
       <h2 className="text-center">Sign Up</h2>
       <form onSubmit={handleSubmit}>
@@ -72,14 +81,6 @@ const Signup = () => {
           value={signUpData.fullName}
           onChange={(e) =>
             setSignUpData((prev) => ({ ...prev, fullName: e.target.value }))
-          }
-        />
-        <input
-          type="phone"
-          placeholder="Phone +251..."
-          value={signUpData.phone}
-          onChange={(e) =>
-            setSignUpData((prev) => ({ ...prev, phone: e.target.value }))
           }
         />
         <input
@@ -106,41 +107,6 @@ const Signup = () => {
           value={confirmedPassword}
           onChange={(e) => setConfirmedPassword(e.target.value)}
         />
-        <label className="text-center my-3">Membership Type:</label>
-        <div className="account-type-choice">
-          <div>
-            <label className="account-type-label d-block">
-              Permanent&nbsp;Donator
-            </label>
-            <input
-              type="radio"
-              className="fs-2 account-type-input ms-2"
-              name="accountType"
-              value="Permanent Donator"
-              onChange={(e) =>
-                setSignUpData((prev) => ({
-                  ...prev,
-                  membership: e.target.value,
-                }))
-              }
-            />
-          </div>
-          <div>
-            <label className="account-type-label d-block">One&nbsp;time</label>
-            <input
-              type="radio"
-              className="fs-2 account-type-input ms-2"
-              name="accountType"
-              value="One time Donator"
-              onChange={(e) =>
-                setSignUpData((prev) => ({
-                  ...prev,
-                  membership: e.target.value,
-                }))
-              }
-            />
-          </div>
-        </div>
         <button
           className="btn btn-success d-block mx-auto mt-3"
           type="submit"
@@ -154,17 +120,14 @@ const Signup = () => {
         Sign in here <i className="bi bi-person-check fs-4 text-info"></i>
       </p>
       <Toaster
-  position="top-center"
-  toastOptions={{
-    style: {
-      margin: "50px", // Add margin
-      padding: "15px", // Add padding
-      //background: "#f5f5f5", // Optional: customize background color
-      //borderRadius: "8px", // Optional: add border radius
-    },
-  }}
-/>
-
+        position="top-center"
+        toastOptions={{
+          style: {
+            margin: "50px",
+            padding: "15px",
+          },
+        }}
+      />
     </div>
   );
 };

@@ -32,6 +32,7 @@ import toast from "react-hot-toast";
      deleteBlog:async(id)=>{
         try {
             set({isDeletingLoading:true});
+            console.log(id);
             await axiosInstance.delete(`deleteBlog/${id}`);
             toast.success("the photo and its Description deleted successfully from Blog section");
         } catch (error) {

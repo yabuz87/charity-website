@@ -5,8 +5,18 @@ import {useDeleteStore} from "../store/useDeleteStore.js"
 
 const Home = () => {
   const { galleryData, projectData, blogData, getProjects, getGalleries, getBlogs } = useGetStore();
-  const {deleteGallery,deleteBlog,deleteProject,is}=useDeleteStore();
+  const {deleteGallery,deleteBlog,deleteProject}=useDeleteStore();
   const [loading, setLoading] = useState(true);
+  const handleBlogDelete = (id) => {
+    deleteBlog(id);
+  };
+  const handleProjectDelete = (id) => {
+    deleteProject(id);
+  }
+  const handleGalleryDelete = (id) => {
+    deleteGallery(id);
+  }
+
 
   // Fetch data on component mount
   useEffect(() => {
@@ -40,8 +50,18 @@ const Home = () => {
                 alt={`Gallery ${item._id}`}
                 className="img-fluid container-fluid"
               />
-              <div>
-                <i className="bi bi-trash3-fill responsive-icon"></i>
+              <div className="text-center">{item.title}</div>
+              <div className='d-flex justify-content-center border'>
+              <i className="bi bi-trash3-fill responsive-icon fs-5" onClick={() => handleGalleryDelete(item._id)} style={{ cursor: "pointer" }} data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Delete"></i>
+
+                  <i className="bi bi-pencil-square fs-5 mx-4"
+      style={{ color: "black", cursor:"pointer"}} // Initial style
+                 data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="edit">
+                             </i>
               </div>
             </div>
           ))
@@ -61,8 +81,18 @@ const Home = () => {
                 alt={`Project ${item._id}`}
                 className="img-fluid container-fluid"
               />
-              <div>
-                <i className="bi bi-trash3-fill responsive-icon"></i>
+              <div className="text-center">{item.title}</div>
+              <div className='d-flex justify-content-center'>
+              <i className="bi bi-trash3-fill responsive-icon fs-5" onClick={() => handleProjectDelete(item._id)} style={{ cursor: "pointer" }} 
+                   data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Delete"></i>
+                  <i className="bi bi-pencil-square fs-5 mx-4"
+                 style={{ color: "black", cursor:"pointer"}} // Initial style
+                 data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="edit">
+                             </i>
               </div>
             </div>
           ))
@@ -74,6 +104,7 @@ const Home = () => {
       <h2 className="text-center">Blog</h2>
       <p className="text-center">These are uploaded blogs</p>
       <div className="container-fluid image-divs">
+
         {blogData?.length > 0 ? (
           blogData.map((item) => (
             <div key={item._id} className="border rounded-1">
@@ -82,8 +113,19 @@ const Home = () => {
                 alt={`Blog ${item._id}`}
                 className="img-fluid container-fluid"
               />
-              <div>
-                <i className="bi bi-trash3-fill responsive-icon"></i>
+               <div className="text-center">{item.title}</div>
+          
+              <div className='d-flex justify-content-center'>
+              <i className="bi bi-trash3-fill responsive-icon fs-5" onClick={() => handleBlogDelete(item._id)} style={{ cursor: "pointer" }} data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Delete"></i>
+
+            <i className="bi bi-pencil-square fs-5 mx-4"
+      style={{ color: "black", cursor:"pointer"}} // Initial style
+                 data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="edit">
+                             </i>
               </div>
             </div>
           ))

@@ -5,7 +5,8 @@
   }
   .image-divs {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    overflow: hidden;
     justify-content: center;
     column-gap:2px;
     row-gap:8px;

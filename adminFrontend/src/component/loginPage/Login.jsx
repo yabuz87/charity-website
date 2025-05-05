@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./Login.css";
-import { useAuthStore } from "../store/useAuthStore";
-import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "../../store/useAuthStore.js";
 import { Toaster } from "react-hot-toast";
 
 const Login = () => {
@@ -11,11 +10,6 @@ const Login = () => {
     password: "",
   });
 
-  const navigate = useNavigate();
-
-  const gotoSignup = () => {
-    navigate("/signup");
-  };
 
   const handleSubmitData = (e) => {
     e.preventDefault();
@@ -54,18 +48,11 @@ const Login = () => {
 
       <div className="hr-container">
         <hr />
-        <p className="or-text">or</p>
+        <p className="or-text"></p>
         <hr />
       </div>
 
-      <p>
-        <i className="bi bi-google text-center fs-2"></i>
-      </p>
       <hr />
-      <h5 onClick={gotoSignup}>
-        Don’t you have an account?{" "}
-        <span className="text-success">Sign Up</span>
-      </h5>
 
       <Toaster
         position="top-center"
