@@ -52,9 +52,10 @@ const Home = () => {
               />
               <div className="text-center">{item.title}</div>
               <div className='d-flex justify-content-center border'>
-              <i className="bi bi-trash3-fill responsive-icon fs-5" onClick={() => handleGalleryDelete(item._id)} style={{ cursor: "pointer" }} data-bs-toggle="tooltip"
+              if(!loading){<i className="bi bi-trash3-fill responsive-icon fs-5" onClick={() => handleGalleryDelete(item._id)} style={{ cursor: "pointer" }} data-bs-toggle="tooltip"
                   data-bs-placement="top"
-                  title="Delete"></i>
+                  title="Delete"></i>}
+              
 
                   <i className="bi bi-pencil-square fs-5 mx-4"
       style={{ color: "black", cursor:"pointer"}} // Initial style
