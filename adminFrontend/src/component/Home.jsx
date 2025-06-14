@@ -1,137 +1,234 @@
 import React, { useState, useEffect } from 'react';
 import "./home.css";
 import useGetStore from '../store/useGetStore';
-import {useDeleteStore} from "../store/useDeleteStore.js"
+import { useDeleteStore } from "../store/useDeleteStore.js";
 
 const Home = () => {
   const { galleryData, projectData, blogData, getProjects, getGalleries, getBlogs } = useGetStore();
-  const {deleteGallery,deleteBlog,deleteProject}=useDeleteStore();
+  const { deleteGallery, deleteBlog, deleteProject } = useDeleteStore();
   const [loading, setLoading] = useState(true);
-  const handleBlogDelete = (id) => {
-    deleteBlog(id);
+  const [activeTab, setActiveTab] = useState('gallery');
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [deletingId, setDeletingId] = useState(null);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState({ id: null, type: null });
+
+  const handleDeleteClick = (id, type) => {
+    setItemToDelete({ id, type });
+    setShowDeleteConfirm(true);
   };
-  const handleProjectDelete = (id) => {
-    deleteProject(id);
-  }
-  const handleGalleryDelete = (id) => {
-    deleteGallery(id);
-  }
 
+  const handleConfirmDelete = async () => {
+    setShowDeleteConfirm(false);
+    setDeletingId(itemToDelete.id);
+    try {
+      if (itemToDelete.type === 'gallery') {
+        await deleteGallery(itemToDelete.id);
+      } else if (itemToDelete.type === 'project') {
+        await deleteProject(itemToDelete.id);
+      } else if (itemToDelete.type === 'blog') {
+        await deleteBlog(itemToDelete.id);
+      }
+    } catch (error) {
+      console.error(`Error deleting ${itemToDelete.type}:`, error);
+    } finally {
+      setDeletingId(null);
+      setItemToDelete({ id: null, type: null });
+    }
+  };
 
-  // Fetch data on component mount
+  const handleCancelDelete = () => {
+    setShowDeleteConfirm(false);
+    setItemToDelete({ id: null, type: null });
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+      if (window.innerWidth >= 768) {
+        setSidebarOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         await getBlogs();
         await getGalleries();
         await getProjects();
-        setLoading(false); // Stop loading once all data is fetched
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
-        setLoading(false); // Stop loading even if there’s an error
+        setLoading(false);
       }
     };
     fetchData();
   }, [getBlogs, getGalleries, getProjects]);
+
   if (loading) {
-    return <p className="text-center">Loading...</p>;
+    return <div className="loading-container"><p>Loading...</p></div>;
   }
 
+  const renderCard = (item, type) => (
+    <div key={item._id} className="content-card">
+      <img
+        src={item.photo}
+        alt={`${type} ${item._id}`}
+        className="card-image"
+      />
+      <div className="card-body">
+        <h3 className="card-title">{item.title}</h3>
+        <div className="card-actions">
+          <button 
+            className="action-btn delete-btn"
+            onClick={() => handleDeleteClick(item._id, type)}
+            title="Delete"
+            disabled={deletingId === item._id}
+          >
+            {deletingId === item._id ? (
+              <i className="bi bi-arrow-clockwise loading-icon"></i>
+            ) : (
+              <i className="bi bi-trash3-fill"></i>
+            )}
+          </button>
+          <button 
+            className="action-btn edit-btn"
+            title="Edit"
+            disabled={deletingId === item._id}
+          >
+            <i className="bi bi-pencil-square"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
-    <div>
-      <h2 className="text-center">Gallery</h2>
-      <p className="text-center">These are uploaded galleries</p>
-      <div className="container-fluid image-divs">
-        {galleryData?.length > 0 ? (
-          galleryData.map((item) => (
-            <div key={item._id} className="border rounded-1">
-              <img
-                src={item.photo}
-                alt={`Gallery ${item._id}`}
-                className="img-fluid container-fluid"
-              />
-              <div className="text-center">{item.title}</div>
-              <div className='d-flex justify-content-center border'>
-              if(!loading){<i className="bi bi-trash3-fill responsive-icon fs-5" onClick={() => handleGalleryDelete(item._id)} style={{ cursor: "pointer" }} data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  title="Delete"></i>}
-              
+    <div className="admin-container">
+      {/* Mobile Header */}
+      {isMobile && (
+        <div className="mobile-header">
+          <button 
+            className="hamburger-btn"
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+          >
+            <i className="bi bi-list"></i>
+          </button>
+          <h3 className="mobile-title">Admin Panel</h3>
+        </div>
+      )}
 
-                  <i className="bi bi-pencil-square fs-5 mx-4"
-      style={{ color: "black", cursor:"pointer"}} // Initial style
-                 data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  title="edit">
-                             </i>
-              </div>
-            </div>
-          ))
-        ) : (
-          <p className="text-center">No galleries available.</p>
-        )}
+      {/* Sidebar */}
+      <div className={`admin-sidebar ${isMobile ? (sidebarOpen ? 'mobile-open' : '') : ''}`}>
+        {!isMobile && <h3 className="sidebar-title">Admin Panel</h3>}
+        <ul className="sidebar-menu">
+          <li 
+            className={`menu-item ${activeTab === 'gallery' ? 'active' : ''}`}
+            onClick={() => {
+              setActiveTab('gallery');
+              if (isMobile) setSidebarOpen(false);
+            }}
+          >
+            <i className="bi bi-images"></i> Gallery
+          </li>
+          <li 
+            className={`menu-item ${activeTab === 'project' ? 'active' : ''}`}
+            onClick={() => {
+              setActiveTab('project');
+              if (isMobile) setSidebarOpen(false);
+            }}
+          >
+            <i className="bi bi-folder"></i> Projects
+          </li>
+          <li 
+            className={`menu-item ${activeTab === 'blog' ? 'active' : ''}`}
+            onClick={() => {
+              setActiveTab('blog');
+              if (isMobile) setSidebarOpen(false);
+            }}
+          >
+            <i className="bi bi-file-earmark-text"></i> Blogs
+          </li>
+        </ul>
       </div>
 
-      <h2 className="text-center">Project</h2>
-      <p className="text-center">These are uploaded projects</p>
-      <div className="container-fluid image-divs">
-        {projectData?.length > 0 ? (
-          projectData.map((item) => (
-            <div key={item._id} className="border rounded-1">
-              <img
-                src={item.photo}
-                alt={`Project ${item._id}`}
-                className="img-fluid container-fluid"
-              />
-              <div className="text-center">{item.title}</div>
-              <div className='d-flex justify-content-center'>
-              <i className="bi bi-trash3-fill responsive-icon fs-5" onClick={() => handleProjectDelete(item._id)} style={{ cursor: "pointer" }} 
-                   data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  title="Delete"></i>
-                  <i className="bi bi-pencil-square fs-5 mx-4"
-                 style={{ color: "black", cursor:"pointer"}} // Initial style
-                 data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  title="edit">
-                             </i>
-              </div>
+      {/* Overlay */}
+      {isMobile && sidebarOpen && (
+        <div 
+          className="sidebar-overlay"
+          onClick={() => setSidebarOpen(false)}
+        ></div>
+      )}
+
+      {/* Delete Confirmation Modal */}
+      {showDeleteConfirm && (
+        <div className="delete-confirm-modal">
+          <div className="delete-confirm-content">
+            <h3>Confirm Deletion</h3>
+            <p>Are you sure you want to delete this {itemToDelete.type}? This action cannot be undone.</p>
+            <div className="delete-confirm-buttons">
+              <button className="confirm-btn" onClick={handleConfirmDelete}>
+                {deletingId === itemToDelete.id ? (
+                  <i className="bi bi-arrow-clockwise loading-icon"></i>
+                ) : (
+                  "Delete"
+                )}
+              </button>
+              <button className="cancel-btn" onClick={handleCancelDelete} disabled={deletingId === itemToDelete.id}>
+                Cancel
+              </button>
             </div>
-          ))
-        ) : (
-          <p className="text-center">No projects available.</p>
+          </div>
+        </div>
+      )}
+
+      {/* Main Content */}
+      <div className={`admin-content ${isMobile ? 'mobile-content' : ''}`}>
+        {activeTab === 'gallery' && (
+          <>
+            <h2 className="content-title">Gallery</h2>
+            <p className="content-subtitle">These are uploaded galleries</p>
+            <div className="card-container">
+              {galleryData?.length > 0 ? (
+                galleryData.map(item => renderCard(item, 'gallery'))
+              ) : (
+                <p className="no-content">No galleries available.</p>
+              )}
+            </div>
+          </>
         )}
-      </div>
 
-      <h2 className="text-center">Blog</h2>
-      <p className="text-center">These are uploaded blogs</p>
-      <div className="container-fluid image-divs">
-
-        {blogData?.length > 0 ? (
-          blogData.map((item) => (
-            <div key={item._id} className="border rounded-1">
-              <img
-                src={item.photo}
-                alt={`Blog ${item._id}`}
-                className="img-fluid container-fluid"
-              />
-               <div className="text-center">{item.title}</div>
-          
-              <div className='d-flex justify-content-center'>
-              <i className="bi bi-trash3-fill responsive-icon fs-5" onClick={() => handleBlogDelete(item._id)} style={{ cursor: "pointer" }} data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  title="Delete"></i>
-
-            <i className="bi bi-pencil-square fs-5 mx-4"
-      style={{ color: "black", cursor:"pointer"}} // Initial style
-                 data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  title="edit">
-                             </i>
-              </div>
+        {activeTab === 'project' && (
+          <>
+            <h2 className="content-title">Projects</h2>
+            <p className="content-subtitle">These are uploaded projects</p>
+            <div className="card-container">
+              {projectData?.length > 0 ? (
+                projectData.map(item => renderCard(item, 'project'))
+              ) : (
+                <p className="no-content">No projects available.</p>
+              )}
             </div>
-          ))
-        ) : (
-          <p className="text-center">No blogs available.</p>
+          </>
+        )}
+
+        {activeTab === 'blog' && (
+          <>
+            <h2 className="content-title">Blogs</h2>
+            <p className="content-subtitle">These are uploaded blogs</p>
+            <div className="card-container">
+              {blogData?.length > 0 ? (
+                blogData.map(item => renderCard(item, 'blog'))
+              ) : (
+                <p className="no-content">No blogs available.</p>
+              )}
+            </div>
+          </>
         )}
       </div>
     </div>

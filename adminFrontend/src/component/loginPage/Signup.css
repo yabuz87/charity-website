@@ -1,77 +1,210 @@
-.Signup-container {
-    margin-top: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centering vertically */
-    align-items: center; /* Centering horizontally */
-    box-shadow: 0.3px 0.3px 2px 0.3px rgba(0, 0, 0, 0.2);
-    padding: 20px; /* Added padding for spacing within the container */
-    width: 100%;
-    max-width: 500px; /* Limiting the maximum width for better appearance */
-    background-color: #fff; /* Added a background color for better contrast */
+:root {
+  --primary-color: #4361ee;
+  --secondary-color: #3f37c9;
+  --accent-color: #4cc9f0;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+  --success-color: #4bb543;
+  --error-color: #ff3333;
+  --border-radius: 8px;
+  --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
 }
 
-.Signup-container form {
-    width: 100%; /* Ensuring the form takes full width */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7ff;
+  color: var(--dark-color);
+  line-height: 1.6;
+}
+
+.signup-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(135deg, #f5f7ff 0%, #e8ecff 100%);
+}
+
+.signup-container {
+  width: 100%;
+  max-width: 500px;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 40px;
+  transition: var(--transition);
+}
+
+.signup-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.signup-header h2 {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.signup-header p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
-    align-items: start; /* Aligning items to the left */
-    margin-bottom: 15px; /* Spacing between form groups */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-
-.Signup-container input[type="text"],
-.Signup-container input[type="phone"] {
-    width: 100%; /* Full width input fields */
-    padding: 10px; /* Padding inside input fields for better look */
-    margin-bottom: 15px; /* Margin below input fields for spacing */
-    border: 1px solid #ccc; /* Light grey border */
-    border-radius: 4px; /* Rounded corners */
+.form-group label {
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: 500;
 }
 
-.account-type-choice {
-    display: flex;
-    flex-direction: row;
+.form-group input {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: var(--transition);
 }
 
-.account-type-label {
-    font-weight: 100; /* Setting font-weight to normal for radio button labels */
-    width:60px;
-    color:black;
-    margin-right: 10px; /* Adding space between the label and radio button */
+.form-group input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
 }
 
-.account-type-input {
-    width: 20px; /* Consistent width for radio buttons */
-    height: 20px; /* Consistent height for radio buttons */
-    margin-right: 10px; /* Adding space between the radio button and the label */
+.admin-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
 }
 
-.Signup-container h2 {
-    margin-bottom: 20px; /* Spacing below the heading */
+.admin-toggle input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary-color);
 }
 
-.Signup-container h3 {
-    margin-top: 30px; /* Spacing above the sub-heading */
+.admin-toggle label {
+  font-size: 0.9rem;
+  color: #555;
+  cursor: pointer;
 }
 
-.hr-container {
-    display: flex;
-    align-items: center;
-    text-align: center;
+.admin-code-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: -10px;
+}
+
+.admin-code-group label {
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: 500;
+}
+
+.admin-code-group input {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+}
+
+.signup-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.signup-button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+.signup-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.signup-footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.login-link {
+  color: var(--primary-color);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.login-link:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .signup-container {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-container {
+    padding: 20px;
   }
   
-  .hr-container hr {
-    flex: 1;
-    border: none;
-    border-top: 1px solid #000;
+  .signup-header h2 {
+    font-size: 1.5rem;
   }
-  
-  .hr-container .or-text {
-    margin: 0 10px;
-    white-space: nowrap;
-  }
-  
+}

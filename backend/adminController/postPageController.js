@@ -14,7 +14,6 @@ export const postBlog = async (req, res) => {
     const uploadResponse = await cloudinary.uploader.upload(photo);
     const photoUrl = uploadResponse.secure_url;
     const publicId=uploadResponse.public_id;
-
     const newblog = new Blogs({ 
        description,
        title,

@@ -9,6 +9,7 @@ import Signup from './component/loginPage/Signup';
 import { useAuthStore } from './store/useAuthStore';
 import Home from './component/Home';
 import GalleryPost from './component/GallleryPost';
+import AdminProfile from './component/AdminProfile';
 
 const App = () => {
   const { authUser } = useAuthStore();
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/uploadgallery" element={authUser ? <GalleryPost /> : <Navigate to="/login" />} />
         <Route path="/uploadblog" element={authUser ? <BlogPostPage /> : <Navigate to="/login" />} />
         <Route path="/uploadproject" element={authUser ? <ProjectPost /> : <Navigate to="/login" />} />
+        <Route path="/profile" element={authUser ? <AdminProfile /> : <Navigate to="/login" />} />
       </Routes>
       <Toaster />
     </Router>

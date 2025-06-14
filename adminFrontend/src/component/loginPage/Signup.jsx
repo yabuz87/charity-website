@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Signup.css";
 import { useNavigate } from "react-router-dom";
-import { Toaster } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 import { useAuthStore } from "../../store/useAuthStore";
 
 const Signup = () => {
@@ -12,42 +12,46 @@ const Signup = () => {
     fullName: "",
     email: "",
     password: "",
+    role: "user" // Added role field for admin/user distinction
   });
 
   const [confirmedPassword, setConfirmedPassword] = useState("");
+  const [showAdminLogin, setShowAdminLogin] = useState(false);
 
-  // Function to handle navigation
   const handleNavigate = () => {
     navigate("/signupOrlogin");
   };
 
-  // Function to validate inputs
+  const toggleAdminLogin = () => {
+    setShowAdminLogin(!showAdminLogin);
+    setSignUpData(prev => ({ ...prev, role: showAdminLogin ? "user" : "admin" }));
+  };
+
   const validateInputs = () => {
     if (Object.values(signUpData).some((field) => field.trim() === "")) {
-      alert("Please fill out all the fields!");
+      toast.error("Please fill out all the fields!");
       return false;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(signUpData.email)) {
-      alert("Please enter a valid email address!");
+      toast.error("Please enter a valid email address!");
       return false;
     }
 
     if (signUpData.password.length < 6) {
-      alert("Password must be at least 6 characters!");
+      toast.error("Password must be at least 6 characters!");
       return false;
     }
 
     if (signUpData.password !== confirmedPassword) {
-      alert("Passwords do not match!");
+      toast.error("Passwords do not match!");
       return false;
     }
 
     return true;
   };
 
-  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -55,79 +59,128 @@ const Signup = () => {
 
     try {
       await signup(signUpData);
-      console.log("entered into try block")
-      alert("Signup successful!");
+      toast.success("Signup successful!");
+      if (signUpData.role === "admin") {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/dashboard");
+      }
     } catch (error) {
       console.error(error.message);
-      alert(
+      toast.error(
         error.response?.data?.message ||
         "Signup failed! Please try again later."
       );
     }
   };
 
-  // Check if the form is complete
   const isFormComplete = Object.values(signUpData).every(
     (field) => field.trim() !== ""
   );
 
   return (
-    <div className="Signup-container container-lg">
-      <h2 className="text-center">Sign Up</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Full Name"
-          value={signUpData.fullName}
-          onChange={(e) =>
-            setSignUpData((prev) => ({ ...prev, fullName: e.target.value }))
-          }
-        />
-        <input
-          type="text"
-          placeholder="Email"
-          value={signUpData.email}
-          onChange={(e) =>
-            setSignUpData((prev) => ({ ...prev, email: e.target.value }))
-          }
-        />
-        <input
-          type="password"
-          className="m-2 d-block w-75 p-2"
-          placeholder="Password"
-          value={signUpData.password}
-          onChange={(e) =>
-            setSignUpData((prev) => ({ ...prev, password: e.target.value }))
-          }
-        />
-        <input
-          type="password"
-          className="m-2 d-block w-75 p-2"
-          placeholder="Confirm Password"
-          value={confirmedPassword}
-          onChange={(e) => setConfirmedPassword(e.target.value)}
-        />
-        <button
-          className="btn btn-success d-block mx-auto mt-3"
-          type="submit"
-          disabled={isSigningUp || !isFormComplete}
-        >
-          {isSigningUp ? "Signing Up..." : "Sign Up"}
-        </button>
-      </form>
-      <h3>Do you have an account?</h3>
-      <p onClick={handleNavigate}>
-        Sign in here <i className="bi bi-person-check fs-4 text-info"></i>
-      </p>
-      <Toaster
-        position="top-center"
-        toastOptions={{
-          style: {
-            margin: "50px",
-            padding: "15px",
-          },
-        }}
-      />
+    <div className="signup-wrapper">
+      <div className="signup-container">
+        <div className="signup-header">
+          <h2>Create Account</h2>
+          <p>Join our community today</p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="signup-form">
+          <div className="form-group">
+            <label htmlFor="fullName">Full Name</label>
+            <input
+              id="fullName"
+              type="text"
+              placeholder="Enter your full name"
+              value={signUpData.fullName}
+              onChange={(e) =>
+                setSignUpData((prev) => ({ ...prev, fullName: e.target.value }))
+              }
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              placeholder="Enter your email"
+              value={signUpData.email}
+              onChange={(e) =>
+                setSignUpData((prev) => ({ ...prev, email: e.target.value }))
+              }
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              placeholder="Create a password"
+              value={signUpData.password}
+              onChange={(e) =>
+                setSignUpData((prev) => ({ ...prev, password: e.target.value }))
+              }
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="confirmPassword">Confirm Password</label>
+            <input
+              id="confirmPassword"
+              type="password"
+              placeholder="Confirm your password"
+              value={confirmedPassword}
+              onChange={(e) => setConfirmedPassword(e.target.value)}
+            />
+          </div>
+
+          <div className="admin-toggle">
+            <input
+              type="checkbox"
+              id="adminToggle"
+              checked={showAdminLogin}
+              onChange={toggleAdminLogin}
+            />
+            <label htmlFor="adminToggle">Register as admin</label>
+          </div>
+
+          {showAdminLogin && (
+            <div className="admin-code-group">
+              <label htmlFor="adminCode">Admin Code</label>
+              <input
+                id="adminCode"
+                type="password"
+                placeholder="Enter admin access code"
+              />
+            </div>
+          )}
+
+          <button
+            className="signup-button"
+            type="submit"
+            disabled={isSigningUp || !isFormComplete}
+          >
+            {isSigningUp ? (
+              <span className="spinner"></span>
+            ) : (
+              "Create Account"
+            )}
+          </button>
+        </form>
+
+        <div className="signup-footer">
+          <p>
+            Already have an account?{" "}
+            <span onClick={handleNavigate} className="login-link">
+              Sign in
+            </span>
+          </p>
+        </div>
+      </div>
+      <Toaster position="top-center" />
     </div>
   );
 };

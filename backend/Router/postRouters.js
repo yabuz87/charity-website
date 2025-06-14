@@ -9,4 +9,3 @@ postRouter.post("/addgallery",protectRoute,postGallery);
 postRouter.post("/addProject",protectRoute,postProject);
 
 export default postRouter;
-
