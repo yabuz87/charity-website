@@ -46,22 +46,24 @@ export const useAuthStore = create(
         }
       },
 
-      // Login function
-      login: async (data) => {
-        try {
-          set({ isLoggingIn: true });
-          const response = await axiosInstance.post("admin/login", data);
-          set({ authUser: response.data });
-          toast.success("You logged in successfully! 🎉");
-        } catch (error) {
-          console.error("Error in login method:", error?.response || error);
-          const errorMessage =
-            error.response?.data?.message || "Login failed. Please check your credentials.";
-          toast.error(errorMessage);
-        } finally {
-          set({ isLoggingIn: false });
-        }
-      },
+     login: async (data) => {
+  try {
+    set({ isLoggingIn: true });
+    const response = await axiosInstance.post("admin/login", data);
+    set({ authUser: response.data });
+
+    toast.success("You logged in successfully! 🎉", { id: "login-success" });
+  } catch (error) {
+    console.error("Error in login method:", error?.response || error);
+    const errorMessage =
+      error.response?.data?.message || "Login failed. Please check your credentials.";
+
+    toast.error(errorMessage, { id: "login-error" });
+  } finally {
+    set({ isLoggingIn: false });
+  }
+},
+
 
       // Logout function
       logout: async () => {

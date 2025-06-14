@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Login.css";
+import "./login.css";
 import { useAuthStore } from "../../store/useAuthStore.js";
 import { Toaster } from "react-hot-toast";
 
@@ -9,7 +9,6 @@ const Login = () => {
     email: "",
     password: "",
   });
-
 
   const handleSubmitData = (e) => {
     e.preventDefault();
