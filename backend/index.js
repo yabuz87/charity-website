@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(express.json());
 app.use(cors({
-    origin: ["http://localhost:5173","http://localhost:5174",],
+    origin: ["https://cornelius-charity-org.vercel.app","https://corneliusadmin.vercel.app",],
     credentials: true,
 }));
 app.get("/",(req,res)=>{
