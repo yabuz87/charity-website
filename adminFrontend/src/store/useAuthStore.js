@@ -65,22 +65,25 @@ export const useAuthStore = create(
 },
 
 
-      // Logout function
       logout: async () => {
-        try {
-          set({ isLoggingOut: true }); // Indicate logout in progress
-          await axiosInstance.post("/admin/logout"); // Call API logout endpoint
-          set({ authUser: null }); // Clear authentication state
-          toast.success("Logged out successfully! 🎉");
-        } catch (error) {
-          console.error("Logout error:", error?.response || error);
-          const errorMessage =
-            error.response?.data?.message || "Logout failed! Please try again.";
-          toast.error(errorMessage);
-        } finally {
-          set({ isLoggingOut: false });
-        }
-      },
+  try {
+    set({ isLoggingOut: true }); // Indicate logout in progress
+    await axiosInstance.post("/admin/logout"); // Call API logout endpoint
+    set({ authUser: null }); // Clear authentication state
+
+   
+    toast.success("Logged out successfully! 🎉", { id: "logout-success" });
+  } catch (error) {
+    console.error("Logout error:", error?.response || error);
+    const errorMessage =
+      error.response?.data?.message || "Logout failed! Please try again.";
+
+    toast.error(errorMessage, { id: "logout-error" });
+  } finally {
+    set({ isLoggingOut: false });
+  }
+},
+
     }),
     { name: "auth-storage" } // Persist authentication state in local storage
   )
