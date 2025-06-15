@@ -22,6 +22,7 @@ const useGetStore = create((set) => ({
     isUsersLoading:false,
     galleryData: [],
     blogData: [],
+    users:[],
     projectData: [],
     numericalDataForFocusingAreaChart:{
         labels: ['unEmployed Youth', 'orphanes', 'widowes', 'Aged individuals', 'clean water for society', 'Children'],
@@ -37,7 +38,7 @@ const useGetStore = create((set) => ({
     getProjects: () => fetchData("get/projects", (loading) => set({ isProjectsLoading: loading }), (data) => set({ projectData: data }), "projects"),
 
     getBlogs: () => fetchData("get/blogs", (loading) => set({ isBlogsLoading: loading }), (data) => set({ blogData: data }), "blogs"),
-    getUsers:()=> fetchData("get/users",(loading) => set({ isUsersLoading: loading }), (data) => set({ blogData: data }), "users")
+    getUsers:()=> fetchData("get/users",(loading) => set({ isUsersLoading: loading }), (data) => set({ users: data }), "users")
 }));
 
 export default useGetStore;
