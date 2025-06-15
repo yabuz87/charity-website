@@ -57,7 +57,8 @@ export const login = async (req, res) => {
             _id: user._id,
             email: user.email,
             fullName: user.fullName,
-            phone: user.phone
+            joinDate:user.createdAt,
+            updatedAt:user.updatedAt
         });
 
     } catch (error) {

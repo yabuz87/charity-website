@@ -2,6 +2,7 @@ import express from "express";
 import Blogs from "../model/blogs.model.js"
 import Gallery from "../model/gallery.model.js";
 import Project from "../model/project.model.js";
+import users from "../model/user.model.js";
 
 
 export const getHomePage=async(req,res)=>{
@@ -64,4 +65,23 @@ export const getProjectPage=async(req,res)=>
     
   }
 
+}
+export const getUsers=async(req,res)=>
+{
+  try {
+    const data=await users.find({});
+    if(data!==null)
+    {
+      res.status(200).json(data);
+    }
+    else
+    {
+       console.log("messages have been sent from the server")
+       res.status(200).json({"message":"empty file"}) 
+    }
+    
+  } catch (error) {
+     res.json({"message":error.message});
+     console.log("there is error in getBlogsPage method");
+  }
 }
