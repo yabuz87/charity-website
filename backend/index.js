@@ -16,7 +16,7 @@ const app=express();
 const port=process.env.PORT
 
 app.use(cors({
-    origin: ["https://cornelius-charity-org.vercel.app","https://admin-charity.onrender.com","http://localhost:5173/",],
+    origin: ["https://cornelius-charity-org.vercel.app","https://cornelius-admin.vercel.app/"],
     credentials: true,
 }));
 app.use(express.urlencoded({extended:false}));
