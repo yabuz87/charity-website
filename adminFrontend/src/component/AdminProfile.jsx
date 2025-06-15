@@ -90,7 +90,7 @@ const AdminProfile = () => {
       <div className="admin-profile-sidebar">
         <div className="profile-header">
           <img 
-            src={adminData.profileImage || '/default-user-icon.png'} 
+             src={adminData.profileImage || "https://cdn-icons-png.flaticon.com/512/149/149071.png"}
             alt="Admin Profile" 
             className="profile-image"
           />
