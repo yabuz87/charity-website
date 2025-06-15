@@ -8,7 +8,7 @@ const Home = () => {
     galleryData,
     projectData,
     blogData,
-    ,
+    users,
     getProjects,
     getGalleries,
     getBlogs,
