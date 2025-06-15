@@ -19,6 +19,7 @@ const useGetStore = create((set) => ({
     isGalleriesLoading: false,
     isBlogsLoading: false,
     isProjectsLoading: false,
+    isUsersLoading:false,
     galleryData: [],
     blogData: [],
     projectData: [],
@@ -36,6 +37,7 @@ const useGetStore = create((set) => ({
     getProjects: () => fetchData("get/projects", (loading) => set({ isProjectsLoading: loading }), (data) => set({ projectData: data }), "projects"),
 
     getBlogs: () => fetchData("get/blogs", (loading) => set({ isBlogsLoading: loading }), (data) => set({ blogData: data }), "blogs"),
+    getUsers:()=> fetchData("get/users",(loading) => set({ isUsersLoading: loading }), (data) => set({ blogData: data }), "users")
 }));
 
 export default useGetStore;

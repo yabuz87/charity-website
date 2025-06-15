@@ -4,8 +4,20 @@ import useGetStore from '../store/useGetStore';
 import { useDeleteStore } from "../store/useDeleteStore.js";
 
 const Home = () => {
-  const { galleryData, projectData, blogData, getProjects, getGalleries, getBlogs } = useGetStore();
+  const {
+    galleryData,
+    projectData,
+    blogData,
+    users,
+    getProjects,
+    getGalleries,
+    getBlogs,
+    getUsers,
+    isUsersLoading
+  } = useGetStore();
+
   const { deleteGallery, deleteBlog, deleteProject } = useDeleteStore();
+
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('gallery');
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -61,6 +73,7 @@ const Home = () => {
         await getBlogs();
         await getGalleries();
         await getProjects();
+        await getUsers();
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -68,7 +81,7 @@ const Home = () => {
       }
     };
     fetchData();
-  }, [getBlogs, getGalleries, getProjects]);
+  }, [getBlogs, getGalleries, getProjects, getUsers]);
 
   if (loading) {
     return <div className="loading-container"><p>Loading...</p></div>;
@@ -76,15 +89,11 @@ const Home = () => {
 
   const renderCard = (item, type) => (
     <div key={item._id} className="content-card">
-      <img
-        src={item.photo}
-        alt={`${type} ${item._id}`}
-        className="card-image"
-      />
+      <img src={item.photo} alt={`${type} ${item._id}`} className="card-image" />
       <div className="card-body">
         <h3 className="card-title">{item.title}</h3>
         <div className="card-actions">
-          <button 
+          <button
             className="action-btn delete-btn"
             onClick={() => handleDeleteClick(item._id, type)}
             title="Delete"
@@ -96,11 +105,7 @@ const Home = () => {
               <i className="bi bi-trash3-fill"></i>
             )}
           </button>
-          <button 
-            className="action-btn edit-btn"
-            title="Edit"
-            disabled={deletingId === item._id}
-          >
+          <button className="action-btn edit-btn" title="Edit" disabled={deletingId === item._id}>
             <i className="bi bi-pencil-square"></i>
           </button>
         </div>
@@ -110,62 +115,37 @@ const Home = () => {
 
   return (
     <div className="admin-container">
-      {/* Mobile Header */}
       {isMobile && (
         <div className="mobile-header">
-          <button 
-            className="hamburger-btn"
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-          >
+          <button className="hamburger-btn" onClick={() => setSidebarOpen(!sidebarOpen)}>
             <i className="bi bi-list"></i>
           </button>
           <h3 className="mobile-title">Admin Panel</h3>
         </div>
       )}
 
-      {/* Sidebar */}
       <div className={`admin-sidebar ${isMobile ? (sidebarOpen ? 'mobile-open' : '') : ''}`}>
         {!isMobile && <h3 className="sidebar-title">Admin Panel</h3>}
         <ul className="sidebar-menu">
-          <li 
-            className={`menu-item ${activeTab === 'gallery' ? 'active' : ''}`}
-            onClick={() => {
-              setActiveTab('gallery');
-              if (isMobile) setSidebarOpen(false);
-            }}
-          >
+          <li className={`menu-item ${activeTab === 'gallery' ? 'active' : ''}`} onClick={() => { setActiveTab('gallery'); if (isMobile) setSidebarOpen(false); }}>
             <i className="bi bi-images"></i> Gallery
           </li>
-          <li 
-            className={`menu-item ${activeTab === 'project' ? 'active' : ''}`}
-            onClick={() => {
-              setActiveTab('project');
-              if (isMobile) setSidebarOpen(false);
-            }}
-          >
+          <li className={`menu-item ${activeTab === 'project' ? 'active' : ''}`} onClick={() => { setActiveTab('project'); if (isMobile) setSidebarOpen(false); }}>
             <i className="bi bi-folder"></i> Projects
           </li>
-          <li 
-            className={`menu-item ${activeTab === 'blog' ? 'active' : ''}`}
-            onClick={() => {
-              setActiveTab('blog');
-              if (isMobile) setSidebarOpen(false);
-            }}
-          >
+          <li className={`menu-item ${activeTab === 'blog' ? 'active' : ''}`} onClick={() => { setActiveTab('blog'); if (isMobile) setSidebarOpen(false); }}>
             <i className="bi bi-file-earmark-text"></i> Blogs
+          </li>
+          <li className={`menu-item ${activeTab === 'users' ? 'active' : ''}`} onClick={() => { setActiveTab('users'); if (isMobile) setSidebarOpen(false); }}>
+            <i className="bi bi-people-fill"></i> Users
           </li>
         </ul>
       </div>
 
-      {/* Overlay */}
       {isMobile && sidebarOpen && (
-        <div 
-          className="sidebar-overlay"
-          onClick={() => setSidebarOpen(false)}
-        ></div>
+        <div className="sidebar-overlay" onClick={() => setSidebarOpen(false)}></div>
       )}
 
-      {/* Delete Confirmation Modal */}
       {showDeleteConfirm && (
         <div className="delete-confirm-modal">
           <div className="delete-confirm-content">
@@ -187,7 +167,6 @@ const Home = () => {
         </div>
       )}
 
-      {/* Main Content */}
       <div className={`admin-content ${isMobile ? 'mobile-content' : ''}`}>
         {activeTab === 'gallery' && (
           <>
@@ -228,6 +207,29 @@ const Home = () => {
                 <p className="no-content">No blogs available.</p>
               )}
             </div>
+          </>
+        )}
+
+        {activeTab === 'users' && (
+          <>
+            <h2 className="content-title">Registered Users</h2>
+            <p className="content-subtitle">List of signed-up users</p>
+            {isUsersLoading ? (
+              <p className="no-content">Loading users...</p>
+            ) : users?.length === 0 ? (
+              <p className="no-content">No registered users found.</p>
+            ) : (
+              <div className="card-container">
+                {users.map((user, index) => (
+                  <div key={index} className="user-card">
+                    <h3 className="user-name">{user.fullName}</h3>
+                    <p><strong>Email:</strong> {user.email}</p>
+                    <p><strong>Phone:</strong> {user.phone}</p>
+                    <p><strong>Membership:</strong> {user.membership}</p>
+                  </div>
+                ))}
+              </div>
+            )}
           </>
         )}
       </div>
