@@ -219,13 +219,26 @@ const Home = () => {
             ) : users?.length === 0 ? (
               <p className="no-content">No registered users found.</p>
             ) : (
-              <div className="card-container">
+              <div className="user-list">
                 {users.map((user, index) => (
-                  <div key={index} className="user-card">
-                    <h3 className="user-name">{user.fullName}</h3>
-                    <p><strong>Email:</strong> {user.email}</p>
-                    <p><strong>Phone:</strong> {user.phone}</p>
-                    <p><strong>Membership:</strong> {user.membership}</p>
+                  <div key={index} className="user-row">
+                    <div className="user-icon">
+                      <i className="bi bi-person-circle"></i>
+                    </div>
+                    <div className="user-details">
+                      <p className="user-name">{user.fullName}</p>
+                      <p><strong>Email:</strong> {user.email}</p>
+                      <p><strong>Phone:</strong> {user.phone}</p>
+                      <p><strong>Membership:</strong> {user.membership}</p>
+                    </div>
+                    <div className="user-actions">
+                      <button className="action-btn edit-btn" title="Edit">
+                        <i className="bi bi-pencil-square"></i>
+                      </button>
+                      <button className="action-btn delete-btn" title="Delete">
+                        <i className="bi bi-trash3-fill"></i>
+                      </button>
+                    </div>
                   </div>
                 ))}
               </div>

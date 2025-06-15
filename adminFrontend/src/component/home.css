@@ -325,6 +325,66 @@ body {
     height: 180px;
   }
 }
+.user-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.user-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.user-row:hover {
+  background-color: #f9f9f9;
+}
+
+.user-icon {
+  font-size: 40px;
+  color: #4a90e2;
+  margin-right: 20px;
+}
+
+.user-details {
+  flex: 1;
+}
+
+.user-name {
+  font-weight: bold;
+  font-size: 17px;
+  margin-bottom: 5px;
+}
+
+.user-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.user-actions .action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #444;
+  transition: color 0.2s ease;
+}
+
+.user-actions .edit-btn:hover {
+  color: #007bff;
+}
+
+.user-actions .delete-btn:hover {
+  color: #dc3545;
+}
+
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .card-container {
